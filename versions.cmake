@@ -87,9 +87,13 @@ add_revision(manta
   URL_MD5 fbf4107fe2f6d7e8a5ae3dda71805bdc)
 
 if (UNIX)
+  # Added zCFD mpi
   add_revision(mpi
-    URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
-    URL_MD5 b470666749bcb4a0449a072a18e2c204)
+    URL "http://packages.zenotech.com/openmpi-1.6.5.tar.gz"
+    URL_MD5 03aed2a4aa4d0b27196962a2a65fc475)
+  #add_revision(mpi
+  #  URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
+  #  URL_MD5 b470666749bcb4a0449a072a18e2c204)
 elseif (WIN32)
   add_revision(mpi
     URL "http://www.paraview.org/files/dependencies/openmpi-1.4.4.tar.gz"
@@ -199,3 +203,23 @@ add_revision(lapack
 add_revision(netcdf
   URL http://www.paraview.org/files/dependencies/netcdf-4.3.2.modified.tar.gz
   URL_MD5 1841196c2bfcf10246966eecf92ad0ec)
+
+# zCFD specfic projects
+
+add_revision(parmetis
+  URL "http://packages.zenotech.com/parmetis-4.0.2.tar.gz"
+  URL_MD5 d07c8c40a4f48fc1585f6fdeb0acce65)
+
+add_revision(trilinos
+  URL "http://packages.zenotech.com/trilinos-11.4.1-Source.tar.gz"
+  URL_MD5 150110384be0c92f38f91ec2c599f7f1)
+
+add_revision(scotch
+  URL "http://packages.zenotech.com/scotch_5.1.12b.tar.gz"
+  URL_MD5 5d912599c2521b1ecbcd8d12b68eef9c)
+
+add_revision(threadworker
+  GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
+  GIT_TAG master)
+
+  

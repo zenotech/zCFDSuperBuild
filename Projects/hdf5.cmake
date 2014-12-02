@@ -1,7 +1,7 @@
 
 add_external_project(
   hdf5
-  DEPENDS zlib szip
+  DEPENDS zlib szip mpi
 
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS:BOOL=TRUE
@@ -9,6 +9,10 @@ add_external_project(
     -DHDF5_ENABLE_SZIP_SUPPORT:BOOL=TRUE
     -DHDF5_ENABLE_SZIP_ENCODING:BOOL=TRUE
     -DHDF5_BUILD_HL_LIB:BOOL=TRUE
+    -DHDF5_ENABLE_PARALLEL=ON
+    -DHDF5_BUILD_TOOLS=ON
+    -DCMAKE_C_COMPILER=mpicc
+    -DCMAKE_CXX_COMPILER=mpicxx
 )
 
 if (MSVC)

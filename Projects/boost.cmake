@@ -9,7 +9,6 @@ add_external_project(boost
   BUILD_IN_SOURCE 1
   CONFIGURE_COMMAND
     <SOURCE_DIR>/bootstrap.sh --prefix=<INSTALL_DIR>
-                              --with-libraries=python,date_time
                               --with-python=<INSTALL_DIR>/bin/python
                               ${extra_commands}
   BUILD_COMMAND <SOURCE_DIR>/bjam

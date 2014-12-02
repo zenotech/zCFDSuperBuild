@@ -7,10 +7,10 @@ if (APPLE)
   endif()
 endif()
 
-project(ParaViewSuperBuild)
+project(zCFDSuperBuild)
 set (SuperBuild_CMAKE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 set (SuperBuild_PROJECTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Projects")
-set (SuperBuild_BINARY_DIR ${ParaViewSuperBuild_BINARY_DIR})
+set (SuperBuild_BINARY_DIR ${zCFDSuperBuild_BINARY_DIR})
 
 # The external projects list separator string should be set ASAP so that
 # anything else can use it that needs it.

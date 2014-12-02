@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "../ParaViewSuperbuild",
+			"path": "../zCFDSuperbuild",
 			"folder_exclude_patterns": ["build"],
 			"file_exclude_patterns": []
 		}
