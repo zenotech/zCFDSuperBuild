@@ -1,6 +1,6 @@
 
 add_external_project(
-  parmetis
+  trilinos
   DEPENDS  mpi parmetis scotch lapack
 
   CMAKE_ARGS
