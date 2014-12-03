@@ -79,8 +79,10 @@ add_revision(matplotlib
   URL_MD5 30ee59119599331bf1f3b6e838fee9a8)
 
 add_revision(boost
-  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
-  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
+   URL http://packages.zenotech.com/boost_1_53_0.tar.bz2
+   URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
+#  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
+#  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
 
 add_revision(manta
   URL "http://paraview.org/files/dependencies/manta-r2439.tar.gz"
@@ -89,7 +91,7 @@ add_revision(manta
 if (UNIX)
   # Added zCFD mpi
   add_revision(mpi
-    URL "http://packages.zenotech.com/openmpi-1.6.5.tar.gz"
+    URL "http://packages.zenotech.com/openmpi-1.6.5.tar.bz2"
     URL_MD5 03aed2a4aa4d0b27196962a2a65fc475)
   #add_revision(mpi
   #  URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
@@ -220,6 +222,10 @@ add_revision(scotch
 
 add_revision(threadworker
   GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
+  GIT_TAG master)
+
+add_revision(zcfd
+  GIT_REPOSITORY https://github.com/zenotech/zCFD.git
   GIT_TAG master)
 
   

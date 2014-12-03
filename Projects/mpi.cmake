@@ -3,9 +3,6 @@ add_external_project_or_use_system(mpi
                     --prefix=<INSTALL_DIR>
                     --enable-shared
                     --disable-static
-                    --disable-f77
-                    --disable-fc
-                    --disable-mpe
                     --enable-mpi-thread-multiple
                     --with-sge
                     --disable-mpi-interface-warning
