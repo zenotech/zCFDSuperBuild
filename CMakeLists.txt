@@ -249,6 +249,7 @@ else()
     include(trilinos)
     include(scotch)
     include(threadworker)
+    include(zcfd)
   endif()
 
   if (UNIX AND NOT APPLE)
