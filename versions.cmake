@@ -213,7 +213,7 @@ add_revision(parmetis
   URL_MD5 d07c8c40a4f48fc1585f6fdeb0acce65)
 
 add_revision(trilinos
-  URL "http://packages.zenotech.com/trilinos-11.4.1-Source.tar.gz"
+  URL "http://packages.zenotech.com/trilinos-11.4.1-Source.tar.bz2"
   URL_MD5 150110384be0c92f38f91ec2c599f7f1)
 
 add_revision(scotch
