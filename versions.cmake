@@ -79,8 +79,8 @@ add_revision(matplotlib
   URL_MD5 30ee59119599331bf1f3b6e838fee9a8)
 
 add_revision(boost
-   URL http://packages.zenotech.com/boost_1_53_0.tar.bz2
-   URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
+   URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
+   URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
 
