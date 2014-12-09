@@ -308,9 +308,11 @@ if (osmesa_ENABLED AND mesa_ENABLED)
 endif()
 #-------------------------------------------------------------------------
 
-if (paraview_ENABLED)
-  include(paraview.bundle OPTIONAL)
-endif()
+#if (paraview_ENABLED)
+#  include(paraview.bundle OPTIONAL)
+#endif()
+
+include(zcfd.bundle OPTIONAL)
 
 option(NIGHTLY_BINARY_TESTING "Run Nightly-Binary ParaView Testing" OFF)
 
