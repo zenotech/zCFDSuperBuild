@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 2.8.8)
 
-include(GetGitRevisionDescription)
-git_describe(VERSION --tags --dirty=-dirty)
-
 if (APPLE)
   if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
     message(WARNING "Ensure that CMAKE_OSX_SYSROOT, CMAKE_OSX_DEPLOYMENT_TARGET are set correctly")
@@ -47,6 +44,9 @@ set (CMAKE_MODULE_PATH
   "${SuperBuild_CMAKE_DIR}"
   "${CMAKE_CURRENT_SOURCE_DIR}"
   ${CMAKE_MODULE_PATH})
+
+include(GetGitRevisionDescription)
+git_describe(VERSION --tags --dirty=-dirty)
 
 #-----------------------------------------------------------------------------
 if (NOT CROSS_BUILD_STAGE STREQUAL "HOST")
