@@ -11,4 +11,6 @@ Start ssh agent
  eval "$(ssh-agent -s)"
  ssh-add key_id
 
- 
+Test
+
+ ssh -T git@github.com
