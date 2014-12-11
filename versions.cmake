@@ -222,7 +222,7 @@ add_revision(scotch
 
 add_revision(threadworker
   GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
-  GIT_TAG v0.1.0)
+  GIT_TAG v0.1.2)
 
 add_revision(zcfd
   GIT_REPOSITORY https://github.com/zenotech/zCFD.git
