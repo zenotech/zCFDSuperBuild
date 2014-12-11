@@ -71,12 +71,46 @@ else()
 endif()
 
 add_revision(numpy
-  URL "http://paraview.org/files/dependencies/numpy-1.8.1+cmake+static.tar.bz2"
-  URL_MD5 1974dbb4bfa1509e492791a8cd225774)
+  URL "https://pypi.python.org/packages/source/n/numpy/numpy-1.9.1.tar.gz"
+  URL_MD5 78842b73560ec378142665e712ae4ad9)
+#  URL "http://paraview.org/files/dependencies/numpy-1.8.1+cmake+static.tar.bz2"
+#  URL_MD5 1974dbb4bfa1509e492791a8cd225774)
 
 add_revision(matplotlib
   URL "http://paraview.org/files/dependencies/matplotlib-1.1.1_notests.tar.gz"
   URL_MD5 30ee59119599331bf1f3b6e838fee9a8)
+
+add_revision(mpi4py
+  URL "https://pypi.python.org/packages/source/m/mpi4py/mpi4py-1.3.1.tar.gz"
+  URL_MD5 dbe9d22bdc8ed965c23a7ceb6f32fc3c)
+
+add_revision(colorama
+  URL "https://pypi.python.org/packages/source/c/colorama/colorama-0.3.2.tar.gz"
+  URL_MD5 2949d760dfe510a74f5bf4287d474f33)
+
+add_revision(pycuda
+  URL "https://pypi.python.org/packages/source/p/pycuda/pycuda-2014.1.tar.gz"
+  URL_MD5 fdc2f59e57ab7256a7e0df0d9d943022)
+
+add_revision(pyyaml
+  URL "https://pypi.python.org/packages/source/P/PyYAML/PyYAML-3.11.tar.gz"
+  URL_MD5 f50e08ef0fe55178479d3a618efe21db)
+
+add_revision(codepy
+  URL "https://pypi.python.org/packages/source/c/codepy/codepy-2013.1.2.tar.gz"
+  URL_MD5 257e0c14a4bdd60cb58f8b775c2db395)
+
+add_revision(jinja2
+  URL "https://pypi.python.org/packages/source/J/Jinja2/Jinja2-2.7.3.tar.gz"
+  URL_MD5 b9dffd2f3b43d673802fe857c8445b1a)
+
+add_revision(cgen
+  URL "https://pypi.python.org/packages/source/c/cgen/cgen-2014.1.tar.gz"
+  URL_MD5 dd43dff8afe4c6354412ddd1bd6d4f28)
+
+add_revision(snakemq
+  URL "https://pypi.python.org/packages/source/s/snakeMQ/snakeMQ-1.2.tar.gz"
+  URL_MD5 1bf0c94dfc85dfc44428157b80780595)
 
 add_revision(boost
    URL "http://packages.zenotech.com/boost_1_53_0.tar.bz2"
