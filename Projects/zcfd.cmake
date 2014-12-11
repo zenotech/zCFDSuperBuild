@@ -8,5 +8,6 @@ add_external_project(
 	#-DBUILD_CUDA:BOOL=OFF 
 	-DBoost_NO_SYSTEM_PATHS:BOOL=ON 
 	-DHDF5_DIR:FILEPATH=<INSTALL_DIR>/share/cmake/hdf5 
+	${ZCFD_EXTRA_CMAKE_ARGS}
 )
 
