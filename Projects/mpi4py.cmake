@@ -6,7 +6,7 @@ if (WIN32)
 endif()
 
 add_external_project(mpi4py
-  DEPENDS python
+  DEPENDS python mpi
   CONFIGURE_COMMAND ""
   INSTALL_COMMAND
     ${pv_python_executable} setup.py install --prefix=${_install_location}

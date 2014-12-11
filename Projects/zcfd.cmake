@@ -1,7 +1,7 @@
 
 add_external_project(
   zcfd 
-  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk
+  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk mpi4py
 
   CMAKE_ARGS
     -DCMAKE_BUILD_TYPE:STRING=Release 
