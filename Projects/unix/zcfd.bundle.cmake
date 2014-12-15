@@ -88,6 +88,10 @@ if (mpi_ENABLED AND NOT USE_SYSTEM_mpi)
           USE_SOURCE_PERMISSIONS
           COMPONENT ParaView)
 
+  install(DIRECTORY "${install_location}/etc/"
+          DESTINATION "etc"
+          USE_SOURCE_PERMISSIONS
+          COMPONENT ParaView)
 endif()
 
 
@@ -99,4 +103,20 @@ if(python_ENABLED)
     COMPONENT superbuild)
 endif()
 
+# Install etc
+install(DIRECTORY "${install_location}/share/"
+    DESTINATION "share"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
 
+# Install bin
+install(DIRECTORY "${install_location}/bin/"
+    DESTINATION "bin"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
+
+# Install lib
+install(DIRECTORY "${install_location}/lib/"
+    DESTINATION "lib"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
