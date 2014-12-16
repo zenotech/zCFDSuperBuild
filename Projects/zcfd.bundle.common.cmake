@@ -6,7 +6,9 @@ include (zcfd_version)
 # Enable CPack packaging.
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY
   "zCFD - Fastest CFD Solver")
-set(CPACK_PACKAGE_NAME "zCFD")
+if(NOT DEFINED CPACK_PACKAGE_NAME)
+	set(CPACK_PACKAGE_NAME "zCFD")
+endif()
 set(CPACK_PACKAGE_VENDOR "Zenotech Ltd")
 set(CPACK_PACKAGE_VERSION_MAJOR ${zcfd_version_major})
 set(CPACK_PACKAGE_VERSION_MINOR ${zcfd_version_minor})
