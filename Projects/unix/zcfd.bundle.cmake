@@ -120,3 +120,9 @@ install(DIRECTORY "${install_location}/lib/"
     DESTINATION "lib"
     USE_SOURCE_PERMISSIONS
     COMPONENT superbuild)
+
+# Install install intel 
+install(DIRECTORY "${install_location}/intel/"
+    DESTINATION "intel"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
