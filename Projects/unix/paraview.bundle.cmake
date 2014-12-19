@@ -24,6 +24,13 @@ if (python_ENABLED AND NOT USE_SYSTEM_python)
     USE_SOURCE_PERMISSIONS
     COMPONENT superbuild
     PATTERN "pyconfig.h")
+
+  install (DIRECTORY "${install_location}/include/python2.7"
+    DESTINATION "include"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild
+    PATTERN "pyconfig.h")
+
 endif()
 
 # install library dependencies for various executables.
