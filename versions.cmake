@@ -262,7 +262,7 @@ add_revision(threadworker
 
 add_revision(zcfd
   GIT_REPOSITORY git@github.com:zenotech/zCFD.git
-  GIT_TAG master)
+  GIT_TAG "${zcfd_git_tag}")
 #  GIT_TAG ${VERSION})
 
   
