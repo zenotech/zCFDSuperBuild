@@ -28,3 +28,5 @@
 *.app
 
 *.sublime-workspace
+
+*.tmp

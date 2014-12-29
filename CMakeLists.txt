@@ -91,6 +91,7 @@ else ()
 endif()
 
 include(paraview_version)
+include(zcfd_version)
 
 option(TRUST_SVN_CERTIFICATES_AUTOMATICALLY
   "Trust SVN certificates automatically" ON)

@@ -182,7 +182,7 @@ option(ParaView_FROM_GIT "If enabled then the repository is fetched from git" ON
 if (ParaView_FROM_GIT)
   # Download PV from GIT
   add_revision(paraview
-    GIT_REPOSITORY https://github.com/zenotech/ParaView.git
+    GIT_REPOSITORY git@github.com:zenotech/ParaView.git
     GIT_TAG "master")
 else()
   # Variables to hold the URL and MD5 (optional)
@@ -257,12 +257,12 @@ add_revision(scotch
   URL_MD5 5d912599c2521b1ecbcd8d12b68eef9c)
 
 add_revision(threadworker
-  GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
+  GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
   GIT_TAG v0.2.0)
 
 add_revision(zcfd
   GIT_REPOSITORY git@github.com:zenotech/zCFD.git
-  GIT_TAG master)
+  GIT_TAG "${zcfd_git_tag}")
 #  GIT_TAG ${VERSION})
 
   
