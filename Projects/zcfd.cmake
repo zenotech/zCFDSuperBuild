@@ -3,6 +3,8 @@ add_external_project(
   zcfd 
   DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk
 
+  UPDATE_COMMAND git pull
+
   CMAKE_ARGS
     -DCMAKE_BUILD_TYPE:STRING=Release 
 	#-DBUILD_CUDA:BOOL=OFF 

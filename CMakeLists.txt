@@ -26,6 +26,10 @@ elseif (WIN32)
 endif()
 
 #-----------------------------------------------------------------------------
+# Parallel make
+set (MAKE_PARALLEL "6" CACHE STRING "Parallel make")
+
+#-----------------------------------------------------------------------------
 # Cross compilation
 set (CROSS_BUILD_STAGE "HOST" CACHE STRING
   "Cross compilation stage: either HOST(ie no crosscompile)|TOOLS|CROSS")
