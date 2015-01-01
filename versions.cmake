@@ -260,9 +260,29 @@ add_revision(threadworker
   GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
   GIT_TAG v0.2.0)
 
-add_revision(zcfd
-  GIT_REPOSITORY git@github.com:zenotech/zCFD.git
-  GIT_TAG "${zcfd_git_tag}")
-#  GIT_TAG ${VERSION})
+option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
+
+if (zCFD_FROM_GIT)
+  add_revision(zcfd
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
+    GIT_TAG "${zcfd_git_tag}")
+  #  GIT_TAG ${VERSION})
+else()
+  # Variables to hold the URL and MD5 (optional)
+  set (zCFD_URL "" CACHE
+    STRING "Specify the url for zCFD tarball")
+  set (zCFD_URL_MD5 "77cf0e3804eb7bb91d2d94b10bd470f4" CACHE STRING "MD5 of the zCFD tarball")
+
+  # Get the length of the URL specified.
+  if("${zCFD_URL}" STREQUAL "")
+    # No URL specified raise error.
+    message (FATAL_ERROR "zCFD__URL should have a valid URL or FilePath to a zCFD tarball")
+  else()
+    # Download PV from source specified in URL
+    add_revision(zcfd
+      URL ${zCFD_URL}
+      URL_MD5 ${zCFD_URL_MD5})
+  endif()
+endif()
 
   
