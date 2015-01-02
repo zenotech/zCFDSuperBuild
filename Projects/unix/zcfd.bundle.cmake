@@ -128,8 +128,16 @@ install(DIRECTORY "${install_location}/lib/"
     USE_SOURCE_PERMISSIONS
     COMPONENT superbuild)
 
-# Install install intel 
+# Install intel 
 install(DIRECTORY "${install_location}/intel"
     DESTINATION "."
     USE_SOURCE_PERMISSIONS
     COMPONENT superbuild)
+
+# Install lic
+install(DIRECTORY "${install_location}/lic"
+    DESTINATION "."
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
+
+

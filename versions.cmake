@@ -276,7 +276,7 @@ else()
   # Get the length of the URL specified.
   if("${zCFD_URL}" STREQUAL "")
     # No URL specified raise error.
-    message (FATAL_ERROR "zCFD__URL should have a valid URL or FilePath to a zCFD tarball")
+    message (FATAL_ERROR "zCFD_URL should have a valid URL or FilePath to a zCFD tarball")
   else()
     # Download PV from source specified in URL
     add_revision(zcfd
