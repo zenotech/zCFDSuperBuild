@@ -6,7 +6,6 @@ add_external_project(
   #UPDATE_COMMAND git pull
 
   CMAKE_ARGS
-    -DCMAKE_BUILD_TYPE:STRING=Release 
 	#-DBUILD_CUDA:BOOL=OFF 
 	-DBoost_NO_SYSTEM_PATHS:BOOL=ON 
 	-DHDF5_DIR:FILEPATH=<INSTALL_DIR>/share/cmake/hdf5 
