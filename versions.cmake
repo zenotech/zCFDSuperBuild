@@ -115,7 +115,7 @@ add_revision(snakemq
 if (UBUNTU)
   add_revision(boost
     URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
-    URL_MD5 93780777cfbf999a600f62883bd54b17)
+    URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
 #  add_revision(boost
 #    URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
 #    URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
