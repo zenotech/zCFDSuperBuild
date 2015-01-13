@@ -1,3 +1,16 @@
+
+if(POWER8)
+add_external_project(osmesa
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure
+                    --prefix=<INSTALL_DIR>
+                    --with-driver=osmesa
+                    --with-gallium-drivers=
+                    --enable-shared
+                    --disable-static
+                    --build=ppc64le
+  BUILD_IN_SOURCE 1
+)
+else()
 add_external_project(osmesa
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
@@ -7,6 +20,7 @@ add_external_project(osmesa
                     --disable-static
   BUILD_IN_SOURCE 1
 )
+endif()
 
 #add_external_project(osmesa
 #  CONFIGURE_COMMAND <SOURCE_DIR>/configure
