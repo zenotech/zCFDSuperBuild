@@ -11,7 +11,7 @@ add_external_project(boost
     <SOURCE_DIR>/bootstrap.sh --prefix=<INSTALL_DIR>
                               --with-python=<INSTALL_DIR>/bin/python
                               ${extra_commands}
-  BUILD_COMMAND <SOURCE_DIR>/bjam
+  BUILD_COMMAND <SOURCE_DIR>/bjam -j${MAKE_PARALLEL}
   INSTALL_COMMAND <SOURCE_DIR>/bjam --prefix=<INSTALL_DIR> install
 )
 unset(extra_commands)
