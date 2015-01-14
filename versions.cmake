@@ -112,11 +112,25 @@ add_revision(snakemq
   URL "https://pypi.python.org/packages/source/s/snakeMQ/snakeMQ-1.2.tar.gz"
   URL_MD5 1bf0c94dfc85dfc44428157b80780595)
 
-add_revision(boost
-   URL "http://packages.zenotech.com/boost_1_53_0.tar.bz2"
-   URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
-#   URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
-#   URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
+if (UBUNTU)
+#  add_revision(boost
+#    URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
+#    URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
+  add_revision(boost
+    URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
+    URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
+elseif (POWER8)
+  add_revision(boost
+    URL "http://packages.zenotech.com/boost_1_55_0-power8.tar.gz"
+    URL_MD5 b18d3c174ecd9df0cc1e4ff62018622e)
+else()
+#  add_revision(boost
+#     URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
+#     URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
+  add_revision(boost
+     URL "http://packages.zenotech.com/boost_1_53_0.tar.bz2"
+     URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
+endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
 
@@ -125,6 +139,11 @@ add_revision(manta
   URL_MD5 fbf4107fe2f6d7e8a5ae3dda71805bdc)
 
 if (UNIX)
+  if(POWER8)
+      add_revision(mpi
+    URL "http://packages.zenotech.com/openmpi-1.6.5-power8.tar.gz"
+    URL_MD5 5eb18cf7a26d6e7048016cf9a8489b2e)
+  else()
   # Added zCFD mpi
   add_revision(mpi
     URL "http://packages.zenotech.com/openmpi-1.6.5.tar.bz2"
@@ -132,6 +151,7 @@ if (UNIX)
   #add_revision(mpi
   #  URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
   #  URL_MD5 b470666749bcb4a0449a072a18e2c204)
+  endif()
 elseif (WIN32)
   add_revision(mpi
     URL "http://www.paraview.org/files/dependencies/openmpi-1.4.4.tar.gz"
@@ -260,9 +280,29 @@ add_revision(threadworker
   GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
   GIT_TAG v0.2.0)
 
-add_revision(zcfd
-  GIT_REPOSITORY git@github.com:zenotech/zCFD.git
-  GIT_TAG "${zcfd_git_tag}")
-#  GIT_TAG ${VERSION})
+option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
+
+if (zCFD_FROM_GIT)
+  add_revision(zcfd
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
+    GIT_TAG "${zcfd_git_tag}")
+  #  GIT_TAG ${VERSION})
+else()
+  # Variables to hold the URL and MD5 (optional)
+  set (zCFD_URL "" CACHE
+    STRING "Specify the url for zCFD tarball")
+  set (zCFD_URL_MD5 "77cf0e3804eb7bb91d2d94b10bd470f4" CACHE STRING "MD5 of the zCFD tarball")
+
+  # Get the length of the URL specified.
+  if("${zCFD_URL}" STREQUAL "")
+    # No URL specified raise error.
+    message (FATAL_ERROR "zCFD_URL should have a valid URL or FilePath to a zCFD tarball")
+  else()
+    # Download PV from source specified in URL
+    add_revision(zcfd
+      URL ${zCFD_URL}
+      URL_MD5 ${zCFD_URL_MD5})
+  endif()
+endif()
 
   
