@@ -124,9 +124,12 @@ elseif (POWER8)
     URL "http://packages.zenotech.com/boost_1_55_0-power8.tar.gz"
     URL_MD5 b18d3c174ecd9df0cc1e4ff62018622e)
 else()
+#  add_revision(boost
+#     URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
+#     URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
   add_revision(boost
-     URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
-     URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
+     URL "http://packages.zenotech.com/boost_1_53_0.tar.bz2"
+     URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
 endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
