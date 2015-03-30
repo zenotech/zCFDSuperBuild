@@ -12,6 +12,7 @@ add_external_project_or_use_system(python
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
+                    #--enable-shared --build=ppc64le --with-system-ffi
                     ${libtype}
   )
 if (NOT CROSS_BUILD_STAGE STREQUAL "CROSS")

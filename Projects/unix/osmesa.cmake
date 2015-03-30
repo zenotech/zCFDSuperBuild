@@ -10,6 +10,17 @@ add_external_project(osmesa
                     --build=ppc64le
   BUILD_IN_SOURCE 1
 )
+
+# Note 
+# osmesa/src/osmesa/src/mapi/mapi/u_execmem.c
+# osmesa/src/mesa/main/execmem.c
+# Need to add __USE_MISC before sys/mman.h
+#define __USE_MISC
+#include <sys/mman.h>
+
+# Comment out fpclassify function in 
+#osmesa/src/mesa/main/querymatrix.c
+
 else()
 add_external_project(osmesa
   CONFIGURE_COMMAND <SOURCE_DIR>/configure

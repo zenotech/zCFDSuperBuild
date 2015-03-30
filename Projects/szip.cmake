@@ -1,24 +1,29 @@
 
 if(POWER8)
-add_external_project(szip
+  add_external_project(szip
                      CMAKE_ARGS -DCMAKE_BUILD_TYPE:STRING=Release -DBUILD_SHARED_LIBS:BOOL=ON
                      )
-# any project depending on szip, inherits these cmake variables
-add_extra_cmake_args(
-  -DSZIP_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/${CMAKE_SHARED_LIBRARY_PREFIX}szip${CMAKE_SHARED_LIBRARY_SUFFIX}
-  -DSZIP_INCLUDE_DIR:FILEPATH=<INSTALL_DIR>/include)
+
+  # Note ricehdf.h does not get installed correctly 
+  # Need to correct CMakeLists.txt
+
+  # any project depending on szip, inherits these cmake variables
+  add_extra_cmake_args(
+    -DSZIP_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/${CMAKE_SHARED_LIBRARY_PREFIX}szip${CMAKE_SHARED_LIBRARY_SUFFIX}
+    -DSZIP_INCLUDE_DIR:FILEPATH=<INSTALL_DIR>/include)
+
 
 else()
-add_external_project(szip
-  CONFIGURE_COMMAND <SOURCE_DIR>/configure
-                    --enable-encoding
-                    --prefix=<INSTALL_DIR>
-)
+  add_external_project(szip
+    CONFIGURE_COMMAND <SOURCE_DIR>/configure
+                      --enable-encoding
+                      --prefix=<INSTALL_DIR>
+      )
 
-# any project depending on szip, inherits these cmake variables
-add_extra_cmake_args(
-  -DSZIP_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/${CMAKE_SHARED_LIBRARY_PREFIX}sz${CMAKE_SHARED_LIBRARY_SUFFIX}
-  -DSZIP_INCLUDE_DIR:FILEPATH=<INSTALL_DIR>/include)
+  # any project depending on szip, inherits these cmake variables
+  add_extra_cmake_args(
+    -DSZIP_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/${CMAKE_SHARED_LIBRARY_PREFIX}sz${CMAKE_SHARED_LIBRARY_SUFFIX}
+    -DSZIP_INCLUDE_DIR:FILEPATH=<INSTALL_DIR>/include)
 endif()
 
 # get_filename_component on line 10 is missing the 'component' (path).
