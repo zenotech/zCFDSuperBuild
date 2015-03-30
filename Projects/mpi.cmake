@@ -7,8 +7,8 @@ add_external_project_or_use_system(mpi
                     --with-sge
                     --disable-mpi-interface-warning
                     --enable-mpirun-prefix-by-default
-                    --with-openib
-                    --with-verbs
+                    #--with-openib
+                    #--with-verbs
                     #--with-hcoll=/opt/mellanox/hcoll 
                     #--with-fca=/opt/mellanox/fca  
                     #--with-mxm=/opt/mellanox/mxm  
