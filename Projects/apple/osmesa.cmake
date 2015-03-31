@@ -5,6 +5,7 @@ add_external_project(osmesa
                     --with-gallium-drivers=
                     --enable-shared
                     --disable-static
+                    --disable-egl
   BUILD_IN_SOURCE 1
 )
 
@@ -25,9 +26,9 @@ add_external_project(osmesa
 
 add_extra_cmake_args(
   -DOPENGL_INCLUDE_DIR:PATH=<INSTALL_DIR>/include
-  -DOPENGL_gl_LIBRARY:FILEPATH=
-  -DOPENGL_glu_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/libGLU.so
+  -DOPENGL_gl_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/libOSMesa.dylib
+  -DOPENGL_glu_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/libGLU.dylib
   -DVTK_OPENGL_HAS_OSMESA:BOOL=ON
   -DOSMESA_INCLUDE_DIR:PATH=<INSTALL_DIR>/include
-  -DOSMESA_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/libOSMesa.so
+  -DOSMESA_LIBRARY:FILEPATH=<INSTALL_DIR>/lib/libOSMesa.dylib
   -DVTK_USE_X:BOOL=OFF)
