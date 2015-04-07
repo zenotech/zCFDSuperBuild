@@ -17,7 +17,7 @@ add_external_project_or_use_system(python
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
-                    ${libtype} CC=/usr/bin/gcc CXX=/usr/bin/g++ 
+                    ${libtype} CC=/usr/bin/gcc CXX=/usr/bin/g++ AR=/usr/bin/ar
   )
 if (NOT CROSS_BUILD_STAGE STREQUAL "CROSS")
   # Pass the -rpath flag when building python to avoid issues running the
