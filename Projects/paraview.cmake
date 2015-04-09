@@ -43,6 +43,10 @@ add_external_project(paraview
     -DPARAVIEW_ENABLE_MATPLOTLIB:BOOL=${matplotlib_ENABLED}
     -DVTK_USE_SYSTEM_NETCDF:BOOL=${netcdf_ENABLED}
 
+    -DVTK_XDMF_USE_MPI:BOOL=ON
+    -DVTK_USE_SYSTEM_HDF5:BOOL=ON
+    -DXDMF_BUILD_MPI:BOOL=ON
+    
     # since VTK mangles all the following, I wonder if there's any point in
     # making it use system versions.
 #    -DVTK_USE_SYSTEM_FREETYPE:BOOL=${ENABLE_FREETYPE}
@@ -56,6 +60,7 @@ add_external_project(paraview
     # specify the apple app install prefix. No harm in specifying it for all
     # platforms.
     -DMACOSX_APP_INSTALL_PREFIX:PATH=<INSTALL_DIR>/Applications
+    -DPARAVIEW_DO_UNIX_STYLE_INSTALLS:BOOL=ON
 
   ${extra_cmake_args}
 

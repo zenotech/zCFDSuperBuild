@@ -323,7 +323,7 @@ endif()
 #  include(paraview.bundle OPTIONAL)
 #endif()
 
-include(zcfd.bundle OPTIONAL)
+include(zcfd.bundle)
 
 option(NIGHTLY_BINARY_TESTING "Run Nightly-Binary ParaView Testing" OFF)
 
