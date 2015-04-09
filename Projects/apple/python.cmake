@@ -13,7 +13,7 @@ endif()
 append_flags(LDFLAGS "-Wl,-rpath,${install_location}/lib -L${install_location}/lib -L. -lpython2.7" PROJECT_ONLY)
 
 add_external_project_or_use_system(python
-  DEPENDS bzip2 zlib png
+  DEPENDS bzip2 zlib
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
