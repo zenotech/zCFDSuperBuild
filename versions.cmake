@@ -134,6 +134,10 @@ endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
 
+add_revision(gcc
+     URL "http://packages.zenotech.com/gcc-4.9.2.tar.bz2"
+     URL_MD5 881344fd1febfd0641e7d648830678d1)
+
 add_revision(manta
   URL "http://paraview.org/files/dependencies/manta-r2439.tar.gz"
   URL_MD5 fbf4107fe2f6d7e8a5ae3dda71805bdc)
