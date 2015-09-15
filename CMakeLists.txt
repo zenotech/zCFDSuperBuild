@@ -260,6 +260,7 @@ else()
     include(trilinos)
     include(scotch)
     include(threadworker)
+    include(highorder)
     include(zcfd)
   endif()
 

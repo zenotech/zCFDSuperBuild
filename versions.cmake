@@ -284,6 +284,10 @@ add_revision(threadworker
   GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
   GIT_TAG v0.2.0)
 
+add_revision(highorder
+    GIT_REPOSITORY git@github.com:zenotech/PV-HighOrder.git
+    GIT_TAG master)
+
 option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
 
 if (zCFD_FROM_GIT)

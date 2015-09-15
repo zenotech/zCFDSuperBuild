@@ -18,7 +18,7 @@ ELSE()
 
 add_external_project(
   zcfd 
-  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk
+  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk highorder
 
   #UPDATE_COMMAND git pull
 
