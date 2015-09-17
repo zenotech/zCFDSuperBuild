@@ -21,7 +21,7 @@ add_external_project_or_use_system(boost
   CONFIGURE_COMMAND
     <SOURCE_DIR>/bootstrap.sh --prefix=<INSTALL_DIR>
                               --with-python=<INSTALL_DIR>/bin/python
-                              --with-libraries=date_time,thread,system
+  #                            --with-libraries=date_time,thread,system
                               ${extra_commands}
   BUILD_COMMAND <SOURCE_DIR>/bjam -j${PV_MAKE_NCPUS}
   INSTALL_COMMAND <SOURCE_DIR>/bjam --prefix=<INSTALL_DIR> install
