@@ -23,7 +23,7 @@ add_external_project_or_use_system(boost
                               --with-python=<INSTALL_DIR>/bin/python
                               --with-libraries=date_time,thread,system
                               ${extra_commands}
-  BUILD_COMMAND <SOURCE_DIR>/bjam -j${MAKE_PARALLEL}
+  BUILD_COMMAND <SOURCE_DIR>/bjam -j${PV_MAKE_NCPUS}
   INSTALL_COMMAND <SOURCE_DIR>/bjam --prefix=<INSTALL_DIR> install
 )
 unset(extra_commands)
