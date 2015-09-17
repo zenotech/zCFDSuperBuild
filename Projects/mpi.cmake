@@ -9,14 +9,16 @@ IF(APPLE)
                     --with-sge
                     --disable-mpi-interface-warning
                     --enable-mpirun-prefix-by-default
-
-
-  # PVExternalProject_Add sets up an parallel build, by default.
-  # that doesn't work for the version of MPICH2 we're using.
-  #BUILD_COMMAND ${CMAKE_MAKE_PROGRAM}
-  BUILD_IN_SOURCE 1
 )
+
 ELSE()
+
+ if(BUILD_SHARED_LIBS)
+  set(shared_args --enable-shared --disable-static)
+else()
+  set(shared_args --disable-shared --enable-static)
+endif()
+ 
   SET(MPI_EXTRA_CMDS "")
   # Check for presense of hcoll and fca
   SET(HCOLL_FOUND "FALSE")
@@ -44,8 +46,7 @@ ELSE()
   add_external_project_or_use_system(mpi
     CONFIGURE_COMMAND <SOURCE_DIR>/configure
                       --prefix=<INSTALL_DIR>
-                      --enable-shared
-                      --disable-static
+                      ${shared_args}
                       --enable-mpi-thread-multiple
                       --with-sge
                       --disable-mpi-interface-warning
@@ -64,4 +65,9 @@ ELSE()
   #BUILD_COMMAND ${CMAKE_MAKE_PROGRAM}
   BUILD_IN_SOURCE 1
 )
+if(NOT USE_SYSTEM_mpi)
+  set(MPI_C_COMPILER <INSTALL_DIR>/bin/mpicc)
+  set(MPI_CXX_COMPILER <INSTALL_DIR>/bin/mpic++)
+endif()
+
 ENDIF()

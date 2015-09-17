@@ -1,10 +1,53 @@
-cmake_minimum_required(VERSION 2.8.8)
+cmake_minimum_required(VERSION 2.8.9)
 
 if (APPLE)
   if(NOT CMAKE_OSX_DEPLOYMENT_TARGET)
-    message(WARNING "Ensure that CMAKE_OSX_SYSROOT, CMAKE_OSX_DEPLOYMENT_TARGET are set correctly")
     set(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE STRING "By default, build for 64-bit Leopard")
   endif()
+
+  if (NOT CMAKE_OSX_SDK)
+    execute_process(
+      COMMAND xcrun
+              --show-sdk-version
+      OUTPUT_VARIABLE
+              SDK_VERSION
+      RESULT_VARIABLE
+              res
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (res)
+      message(FATAL_ERROR "failed to detect CMAKE_OSX_SDK; please set manually (e.g. \"macosx10.10\")")
+    endif ()
+    SET(CMAKE_OSX_SDK macosx${SDK_VERSION})
+  endif()
+
+  if (NOT CMAKE_OSX_SYSROOT)
+    execute_process(
+      COMMAND xcodebuild
+              -sdk ${CMAKE_OSX_SDK}
+              -version Path
+      OUTPUT_VARIABLE
+              CMAKE_OSX_SYSROOT
+      RESULT_VARIABLE
+              res
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (res)
+      message(FATAL_ERROR "Cannot determine SDK path for SDK: ${CMAKE_OSX_SDK}")
+    endif ()
+  endif ()
+  if (NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+    execute_process(
+      COMMAND xcodebuild
+              -sdk ${CMAKE_OSX_SDK}
+              -version SDKVersion
+      OUTPUT_VARIABLE
+              CMAKE_OSX_DEPLOYMENT_TARGET
+      RESULT_VARIABLE
+              res
+      OUTPUT_STRIP_TRAILING_WHITESPACE)
+    if (res)
+      message(FATAL_ERROR "Cannot determine SDK version for SDK: ${CMAKE_OSX_SDK}")
+    endif ()
+  endif ()
 endif()
 
 project(zCFDSuperBuild)
@@ -18,16 +61,16 @@ set (ep_list_separator "-+-")
 
 set (platform)
 if (APPLE)
-  set (platform "apple")
+  set (platform "apple" "apple-unix")
 elseif (UNIX)
-  set (platform "unix")
+  set (platform "unix" "apple-unix")
 elseif (WIN32)
   set (platform "win32")
 endif()
 
 #-----------------------------------------------------------------------------
 # Parallel make
-set (MAKE_PARALLEL "6" CACHE STRING "Parallel make")
+set (PV_MAKE_NCPUS "6" CACHE STRING "Parallel make")
 
 #-----------------------------------------------------------------------------
 # Cross compilation
@@ -35,19 +78,27 @@ set (CROSS_BUILD_STAGE "HOST" CACHE STRING
   "Cross compilation stage: either HOST(ie no crosscompile)|TOOLS|CROSS")
 set_property(CACHE CROSS_BUILD_STAGE PROPERTY STRINGS
    "HOST" "TOOLS" "CROSS")
+if(CROSS_BUILD_STAGE STREQUAL "HOST")
+  # Default to shared libs
+  set(BUILD_SHARED_LIBS ON  CACHE BOOL "Enable shared libraries")
+else()
+  set(BUILD_SHARED_LIBS OFF CACHE BOOL "Enable shared libraries")
+endif()
 
 #-----------------------------------------------------------------------------
 # Setup CMAKE_MODULE_PATH so that platform specific configurations are processed
 # before the generic ones.
 string(TOLOWER "${CROSS_BUILD_STAGE}" lstage)
-set (CMAKE_MODULE_PATH
-  "${SuperBuild_PROJECTS_DIR}/${platform}/${lstage}"
-  "${SuperBuild_PROJECTS_DIR}/${platform}"
-  "${SuperBuild_PROJECTS_DIR}/common"
-  "${SuperBuild_PROJECTS_DIR}"
-  "${SuperBuild_CMAKE_DIR}"
-  "${CMAKE_CURRENT_SOURCE_DIR}"
-  ${CMAKE_MODULE_PATH})
+set(SuperBuild_MODULE_PATH)
+foreach(P IN LISTS platform)
+  list(APPEND SuperBuild_MODULE_PATH "${SuperBuild_PROJECTS_DIR}/${P}/${lstage}")
+  list(APPEND SuperBuild_MODULE_PATH "${SuperBuild_PROJECTS_DIR}/${P}/")
+endforeach()
+list(APPEND SuperBuild_MODULE_PATH "${SuperBuild_PROJECTS_DIR}/common/")
+list(APPEND SuperBuild_MODULE_PATH "${SuperBuild_PROJECTS_DIR}")
+list(APPEND SuperBuild_MODULE_PATH "${SuperBuild_CMAKE_DIR}")
+list(APPEND SuperBuild_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
+list(INSERT CMAKE_MODULE_PATH 0 ${SuperBuild_MODULE_PATH})
 
 include(GetGitRevisionDescription)
 git_describe(VERSION --tags --dirty=-dirty)
@@ -85,16 +136,6 @@ if (NOT CROSS_BUILD_STAGE STREQUAL "CROSS")
   endif()
 endif()
 
-# Set suffix to be used for generating archives. This ensures that the package
-# files have decent names that we can directly upload to the website.
-set (package_suffix "${CMAKE_SYSTEM_NAME}")
-if (64bit_build)
-  set (package_suffix "${package_suffix}-64bit")
-else ()
-  set (package_suffix "${package_suffix}-32bit")
-endif()
-
-include(paraview_version)
 include(zcfd_version)
 
 option(TRUST_SVN_CERTIFICATES_AUTOMATICALLY
@@ -107,6 +148,10 @@ set (install_location "${CMAKE_CURRENT_BINARY_DIR}/install")
 set (download_location "${CMAKE_CURRENT_BINARY_DIR}/downloads"
      CACHE PATH "Location where source tar-balls are (to be) downloaded.")
 mark_as_advanced(download_location)
+
+if (WIN32)
+  find_program(7Z_EXE NAMES 7z)
+endif ()
 
 if (WIN32)
   set (ldflags)
@@ -176,18 +221,12 @@ if (WIN32)
     find_program(NMAKE_PATH nmake)
     mark_as_advanced(DEVENV_PATH NMAKE_PATH)
   endif()
-  # Freetype uses its own build system on win32...
-  find_program(FTJAM_EXECUTABLE jam)
-  mark_as_advanced(FTJAM_EXECUTABLE)
-  if (freetype_ENABLED)
-    if (NOT FTJAM_EXECUTABLE)
-      message(FATAL_ERROR "FreeType's 'jam' build tool not found! Download it from http://sourceforge.net/projects/freetype/files/ftjam/2.5.2/ and set FTJAM_EXECUTABLE appropriately.")
-    endif()
-  endif()
 endif()
 #-----------------------------------------------------------------------------
 include (ParaViewModules)
 include (versions)
+# Determine ParaView version, either automatically or manually.
+include(DetermineParaViewVersion)
 
 #------------------------------------------------------------------------------
 # enable testing support.
@@ -208,6 +247,13 @@ if (NOT WIN32)
   include(CheckFortran)
 endif()
 
+option(USE_NONFREE_COMPONENTS "Enable the non-free parts of the superbuild" OFF)
+mark_as_advanced(USE_NONFREE_COMPONENTS)
+
+if (ENABLE_qt AND NOT ENABLE_qt4 AND NOT ENABLE_qt5)
+  message(FATAL_ERROR "Qt is enabled, but no version is specified. "
+          "Please enable either Qt4 (recommended) or Qt5.")
+endif ()
 
 # Include all optional projects. These are the ones user can pick and choose.
 # Some of these allow using system libraries too.
@@ -241,10 +287,13 @@ else()
   include(mpi4py)
   include(png)
   include(python)
-#  include(qt)
-#  include(silo)
+  include(qt4)
+  include(qt5)
+  include(silo)
   include(szip)
-#  include(visitbridge)
+  include(visitbridge)
+  include(vortexfinder2)
+  include(xdmf3)
   include(zlib)
   if(CMAKE_Fortran_COMPILER)
     # both of these packages require a Fortran compiler to build so we
@@ -255,6 +304,8 @@ else()
 
   if (UNIX)
     # Supported on Linux/Mac
+    include(adios)
+    include(mxml)
     include(ffmpeg)
     include(parmetis)
     include(trilinos)
@@ -272,18 +323,20 @@ else()
   endif()
 
   # Build CosmoTools on Linux and OS X
-#  if (UNIX)
-#    include(qhull)
-#    include(diy)
-#    include(genericio)
-#    include(cosmotools)
-#  endif()
+  if (UNIX AND USE_NONFREE_COMPONENTS)
+    include(qhull)
+    include(diy)
+    include(genericio)
+    include(cosmotools)
+  endif()
 
   # REMEMBER to tell VTK/ParaView to use VTK_SYSTEM_* for the
   # libraries we've built here.
   include(paraview)
-#  include(vistrails)
-#  include(acusolve)
+  if (USE_NONFREE_COMPONENTS)
+    include(vistrails)
+    include(acusolve)
+  endif ()
 
   # paraview.sdk is a module that is used install the ParaView SDK.
   # Simply enabling this module will result in the ParaView SDK to be
@@ -311,8 +364,8 @@ process_dependencies()
 #-------------------------------------------------------------------------
 # Some sanity checks.
 # Sanity check: Cannot has osmesa and qt enabled at the same time.
-if (osmesa_ENABLED AND qt_ENABLED)
-  message(SEND_ERROR "Cannot enable OSMesa and QT at the same time.")
+if (osmesa_ENABLED AND (qt4_ENABLED OR qt5_ENABLED))
+  message(SEND_ERROR "Cannot enable OSMesa and Qt at the same time.")
 endif()
 # Sanity check: Cannot has osmesa and mesa at the same time.
 if (osmesa_ENABLED AND mesa_ENABLED)
@@ -320,31 +373,62 @@ if (osmesa_ENABLED AND mesa_ENABLED)
 endif()
 #-------------------------------------------------------------------------
 
+# Set suffix to be used for generating archives. This ensures that the package
+# files have decent names that we can directly upload to the website.
+set(package_suffix_items)
+if (qt4_ENABLED)
+  list(APPEND package_suffix_items
+    Qt4)
+endif ()
+if (paraview_ENABLED AND PARAVIEW_RENDERING_BACKEND STREQUAL "OpenGL2")
+  list(APPEND package_suffix_items
+    OpenGL2)
+endif ()
+if (APPLE)
+  list(APPEND package_suffix_items
+    "OSX${CMAKE_OSX_DEPLOYMENT_TARGET}")
+else ()
+  list(APPEND package_suffix_items
+    "${CMAKE_SYSTEM_NAME}")
+endif ()
+if (64bit_build)
+  list(APPEND package_suffix_items
+    "64bit")
+else ()
+  list(APPEND package_suffix_items
+    "32bit")
+endif()
+
+string(REPLACE ";" "-" package_suffix_default "${package_suffix_items}")
+
+# PACKAGE_SUFFIX: A string that can be set to the suffix you want to use for all
+# the generated packages. By default, its set to
+# ${CMAKE_SYSTEM_NAME}-{64|32}bit.
+set (PACKAGE_SUFFIX "<default>"
+  CACHE STRING "String to use as a suffix for generated packages")
+mark_as_advanced(PACKAGE_SUFFIX)
+
+if (NOT PACKAGE_SUFFIX OR PACKAGE_SUFFIX STREQUAL "<default>")
+  set(PACKAGE_SUFFIX "${package_suffix_default}")
+elseif (NOT PACKAGE_SUFFIX STREQUAL package_suffix_default)
+  message(WARNING "The suffix for the package (${PACKAGE_SUFFIX}) does not "
+                  "match the suggested suffix based on build options "
+                  "(${package_suffix_default}). Set it to '<default>' or "
+                  "an empty string to use the default suffix. Using the "
+                  "provided suffix.")
+endif ()
+
+file(WRITE "${CMAKE_BINARY_DIR}/paraview_version.cmake"
+"set(bundle_suffix \"${pv_version_long}-${PACKAGE_SUFFIX}\")
+")
+
 #if (paraview_ENABLED)
 #  include(paraview.bundle OPTIONAL)
 #endif()
 
 include(zcfd.bundle)
 
-option(NIGHTLY_BINARY_TESTING "Run Nightly-Binary ParaView Testing" OFF)
-
-# Create this cache option only if nightly binary testing is enabled,
-# but in that case, you will still have to explicitly turn it on.
-cmake_dependent_option(ENABLE_REMOTE_PVWEB_TEST
-  "Whether or not to include a test of remote pvweb instances" OFF
-  "NIGHTLY_BINARY_TESTING" OFF)
-set(REMOTE_PVWEB_VISUALIZER_URLS
-  http://pvw-test.kitware.com/sbtest
-  http://pvw.kitware.com/sbtest
-  http://paraviewweb.kitware.com/sbtest
-  CACHE STRING "A list of urls against which to run a simple Web Visualizer test.")
-set(REMOTE_PVWEB_TEST_BROWSER
-  firefox
-  CACHE STRING "Which browser to use during testing, either chrome or firefox")
-mark_as_advanced(ENABLE_REMOTE_PVWEB_TEST REMOTE_PVWEB_VISUALIZER_URLS REMOTE_PVWEB_TEST_BROWSER)
-if (NIGHTLY_BINARY_TESTING)
-  add_subdirectory(tests)
-endif()
+add_subdirectory(Testing)
 
 #------------------------------------------------------------------------------
 # Test to check install tree for paraviewsdk

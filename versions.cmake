@@ -8,6 +8,8 @@
 #   ..
 # endif()
 
+include(CMakeDependentOption)
+
 add_revision(bzip2
   URL "http://www.paraview.org/files/dependencies/bzip2-1.0.6.tar.gz"
   URL_MD5 00b516f4704d4a7cb50a1d97e6e8e15b)
@@ -56,11 +58,31 @@ add_revision(fontconfig
   URL "http://paraview.org/files/dependencies/fontconfig-2.8.0.tar.gz"
   URL_MD5 77e15a92006ddc2adbb06f840d591c0e)
 
-add_revision(qt
+add_revision(qt4
   URL "http://paraview.org/files/dependencies/qt-everywhere-opensource-src-4.8.6.tar.gz"
   URL_MD5 2edbe4d6c2eff33ef91732602f3518eb)
 
-if (WIN32 OR (CROSS_BUILD_STAGE STREQUAL "CROSS"))
+if (WIN32)
+  add_revision(qt5
+    URL "http://download.qt.io/official_releases/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.zip"
+    URL_MD5 57b25c68982237abb9e18b347034e005)
+else ()
+  add_revision(qt5
+    URL "http://download.qt.io/official_releases/qt/5.4/5.4.1/single/qt-everywhere-opensource-src-5.4.1.tar.gz"
+    URL_MD5 90f3fbce38ed16e5dc2cd0909ae86ca4)
+endif ()
+
+if (WIN32)
+  if (64bit_build)
+    add_revision(python
+      URL "http://www.paraview.org/files/dependencies/python+deps.tar.bz2"
+      URL_MD5 "4318b8f771eda5606d9ce7f0be9f82e1")
+  else ()
+    add_revision(python
+      URL "http://www.paraview.org/files/dependencies/python+deps-x32.tar.bz2"
+      URL_MD5 "6ba441784a672e08379d23ddd61146f0")
+  endif ()
+elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
   add_revision(python
     URL "http://www.paraview.org/files/dependencies/Python-2.7.3.tgz"
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
@@ -133,6 +155,9 @@ else()
 endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
+#add_revision(boost
+#  URL "http://sourceforge.net/projects/boost/files/boost/1.56.0/boost_1_56_0.tar.gz/download"
+#  URL_MD5 8c54705c424513fa2be0042696a3a162)
 
 add_revision(gcc
      URL "http://packages.zenotech.com/gcc-4.9.2.tar.bz2"
@@ -184,29 +209,11 @@ add_revision(osmesa
     URL_MD5 b9e84efee3931c0acbccd1bb5a860554)
 
 
-# Add an option to not use diy from SVN. One Debian-Etch the SVN is too old
-# to work with invalid SVN certificates.
-option(DIY_SKIP_SVN "If enabled, we simply download diy from a source tar" OFF)
-if(DIY_SKIP_SVN)
-  add_revision(diy
-    URL "http://paraview.org/files/dependencies/diy-src.r178.tar.gz"
-    URL_MD5 4fba13aae93927d0f32dd6db0599ffcd)
-else()
-  if (TRUST_SVN_CERTIFICATES_AUTOMATICALLY)
-    add_revision(diy
-       SVN_REPOSITORY https://svn.mcs.anl.gov/repos/diy/trunk
-       SVN_REVISION -r178
-       SVN_TRUST_CERT 1)
-  else()
-    add_revision(diy
-       SVN_REPOSITORY https://svn.mcs.anl.gov/repos/diy/trunk
-       SVN_REVISION -r178)
-  endif()
-endif()
-
 # ----------------------------------------------------------------------------
 # You choose to download ParaView source form GIT or other URL/FILE tarball
 option(ParaView_FROM_GIT "If enabled then the repository is fetched from git" ON)
+cmake_dependent_option(ParaView_FROM_SOURCE_DIR "Enable to use existing ParaView source." OFF
+  "NOT ParaView_FROM_GIT" OFF)
 
 if (ParaView_FROM_GIT)
   # Download PV from GIT
@@ -214,47 +221,63 @@ if (ParaView_FROM_GIT)
     GIT_REPOSITORY git@github.com:zenotech/ParaView.git
     GIT_TAG "master")
 else()
-  # Variables to hold the URL and MD5 (optional)
-  set (ParaView_URL "http://www.paraview.org/files/v4.2/ParaView-v4.2.0-source.tar.gz" CACHE
-    STRING "Specify the url for ParaView tarball")
-  set (ParaView_URL_MD5 "77cf0e3804eb7bb91d2d94b10bd470f4" CACHE STRING "MD5 of the ParaView tarball")
-
-  # Get the length of the URL specified.
-  if("${ParaView_URL}" STREQUAL "")
-    # No URL specified raise error.
-    message (FATAL_ERROR "ParaView_URL should have a valid URL or FilePath to a ParaView tarball")
+  if (ParaView_FROM_SOURCE_DIR)
+    add_customizable_revision(paraview
+      SOURCE_DIR "ParaViewSource")
   else()
-    # Download PV from source specified in URL
-    add_revision(paraview
-      URL ${ParaView_URL}
-      URL_MD5 ${ParaView_URL_MD5})
+    # Variables to hold the URL and MD5 (optional)
+    add_customizable_revision(paraview
+      URL "http://www.paraview.org/files/v4.4/ParaView-v4.4.0-source.tar.gz"
+      URL_MD5 "fa1569857dd680ebb4d7ff89c2227378")
   endif()
 endif()
-
-add_revision(qhull
-    GIT_REPOSITORY git://github.com/gzagaris/gxzagas-qhull.git
-    GIT_TAG master)
-
-add_revision(genericio
-    GIT_REPOSITORY git://kwsource.kitwarein.com/genericio/genericio.git
-    GIT_TAG v1.3)
 
 #------------------------------------------------------------------------------
 # Optional Plugins. Doesn't affect ParaView binaries at all even if missing
 # or disabled.
 #------------------------------------------------------------------------------
 
-add_revision(cosmotools
+if (USE_NONFREE_COMPONENTS)
+  add_revision(qhull
+    GIT_REPOSITORY https://github.com/mathstuf/qhull.git
+    GIT_TAG next)
+
+  add_revision(genericio
+    GIT_REPOSITORY https://kwgitlab.kitware.com/paraview/genericio.git
+    GIT_TAG master)
+
+  # Add an option to not use diy from SVN. On Debian-Etch the SVN is too old
+  # to work with invalid SVN certificates.
+  option(DIY_SKIP_SVN "If enabled, we simply download diy from a source tar" OFF)
+  if(DIY_SKIP_SVN)
+    add_revision(diy
+      URL "http://paraview.org/files/dependencies/diy-src.r178.tar.gz"
+      URL_MD5 4fba13aae93927d0f32dd6db0599ffcd)
+  else()
+    add_revision(diy
+      GIT_REPOSITORY https://gitlab.kitware.com/paraview/diy.git
+      GIT_TAG f5c00a034279d20cf040705d78a6b7bdb4beae43) # r178
+  endif()
+
+  add_revision(cosmotools
     GIT_REPOSITORY git://public.kitware.com/cosmotools.git
     GIT_TAG v0.13)
 
-add_revision(acusolve
-  GIT_REPOSITORY git://kwsource.kitwarein.com/paraview/acusolvereaderplugin.git
-  GIT_TAG master)
+  add_revision(acusolve
+    GIT_REPOSITORY https://kwgitlab.kitware.com/paraview/acusolvereaderplugin.git
+    GIT_TAG master)
 
-add_revision(vistrails
-  GIT_REPOSITORY git://kwsource.kitwarein.com/paraview/vistrails.git
-  GIT_TAG master)
+  add_revision(vistrails
+    GIT_REPOSITORY https://kwgitlab.kitware.com/paraview/vistrails.git
+    GIT_TAG master)
+endif ()
+
+#add_customizable_revision(vortexfinder2
+#  GIT_REPOSITORY https://github.com/hguo/vortexfinder2.git
+#  GIT_TAG 2bdae9bfc0f36e1013a4b41c5d25c9e6ebbf1701)
+add_customizable_revision(vortexfinder2
+  GIT_REPOSITORY https://github.com/tj-corona/vortexfinder2.git
+  GIT_TAG paraview-superbuild)
 
 #add_revision(mili_plugin
 # URL ${CMAKE_CURRENT_SOURCE_DIR}/Externals/mili)
@@ -270,6 +293,16 @@ add_revision(lapack
 add_revision(netcdf
   URL http://www.paraview.org/files/dependencies/netcdf-4.3.2.modified.tar.gz
   URL_MD5 1841196c2bfcf10246966eecf92ad0ec)
+
+add_revision(mxml
+  URL http://www.paraview.org/files/dependencies/mxml-2.9.tar.gz
+  URL_MD5 e21cad0f7aacd18f942aa0568a8dee19
+)
+
+add_revision(adios
+  URL http://www.paraview.org/files/dependencies/adios-1.8-439f0fb6.tar.bz2
+  URL_MD5 a88701c77a7ead5daadd8d8aff70556a
+)
 
 # zCFD specfic projects
 
@@ -318,4 +351,3 @@ else()
   endif()
 endif()
 
-  
