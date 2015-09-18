@@ -5,7 +5,7 @@ add_external_project_or_use_system(lapack
     -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
     -DCMAKE_Fortran_COMPILER:FILEPATH=${CMAKE_Fortran_COMPILER}
   BUILD_COMMAND
-    make
+    make -j ${PV_MAKE_NCPUS}
   INSTALL_COMMAND
     make install
 )
