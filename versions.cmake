@@ -46,6 +46,10 @@ add_revision(cgns
   URL "http://www.paraview.org/files/dependencies/cgnslib_3.1.3-4.tar.gz"
   URL_MD5 442bba32b576f3429cbd086af43fd4ae)
 
+add_revision(ccmio
+  URL "http://packages.zenotech.com/libccmio-2.6.1.tar.gz"
+  URL_MD5 fa363a5f9c297dd1ddfa67c86cbfe09a)
+
 add_revision(ffmpeg
   URL "http://paraview.org/files/dependencies/ffmpeg-2.3.3.tar.bz2"
   URL_MD5 72361d3b8717b6db3ad2b9da8df7af5e)
@@ -87,9 +91,13 @@ elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
     URL "http://www.paraview.org/files/dependencies/Python-2.7.3.tgz"
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
 else()
+  #add_revision(python
+  #  URL "http://paraview.org/files/dependencies/Python-2.7.2.tgz"
+  #  URL_MD5 "0ddfe265f1b3d0a8c2459f5bf66894c7")
+
   add_revision(python
-    URL "http://paraview.org/files/dependencies/Python-2.7.2.tgz"
-    URL_MD5 "0ddfe265f1b3d0a8c2459f5bf66894c7")
+    URL "https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz"
+    URL_MD5 "d7547558fd673bd9d38e2108c6b42521")
 endif()
 
 add_revision(numpy
