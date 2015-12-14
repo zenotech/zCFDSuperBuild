@@ -96,7 +96,7 @@ else()
   #  URL_MD5 "0ddfe265f1b3d0a8c2459f5bf66894c7")
 
   add_revision(python
-    URL "https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz"
+    URL "http://packages.zenotech.com/Python-2.7.10.tgz"
     URL_MD5 "d7547558fd673bd9d38e2108c6b42521")
 endif()
 
