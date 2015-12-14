@@ -189,9 +189,8 @@ if (UNIX)
     URL "http://packages.zenotech.com/openmpi-1.6.5.tar.bz2"
     URL_MD5 03aed2a4aa4d0b27196962a2a65fc475)
 
-#  add_revision(mpi
-#    URL "http://packages.zenotech.com/openmpi-1.10.0.tar.bz2"
-#    URL_MD5 280cf952de68369cebaca886c5ce0304)
+#    URL "http://packages.zenotech.com/openmpi-1.10.1.tar.bz2"
+#    URL_MD5 f0fcd77ed345b7eafb431968124ba16e)
 
   #add_revision(mpi
   #  URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
