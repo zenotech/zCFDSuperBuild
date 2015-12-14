@@ -10,14 +10,20 @@ if (CROSS_BUILD_STAGE STREQUAL "TOOLS")
   set(libtype "--enable-static --disable-shared")
 endif()
 
-append_flags(LDFLAGS "-Wl,-rpath,${install_location}/lib -L${install_location}/lib -L. -lpython2.7" PROJECT_ONLY)
+#append_flags(LDFLAGS "-Wl,-rpath,${install_location}/lib -L${install_location}/lib -L. -lpython2.7" PROJECT_ONLY)
+
+# Added /opt/local because openssl not included in el capitan
+append_flags(LDFLAGS "-L${install_location}/lib -L. -lpython2.7 -L/opt/local/lib" PROJECT_ONLY)
+#append_flags(EXTRA_CFLAGS "-I/opt/local/include" PROJECT_ONLY)
 
 add_external_project_or_use_system(python
   DEPENDS bzip2 zlib
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
-                    ${libtype} CC=/usr/bin/gcc CXX=/usr/bin/g++ AR=/usr/bin/ar
+                    ${libtype} 
+                    CFLAGS=-I/opt/local/include
+                    #CC=/usr/bin/gcc CXX=/usr/bin/g++ AR=/usr/bin/ar
   )
 if (NOT CROSS_BUILD_STAGE STREQUAL "CROSS")
   # Pass the -rpath flag when building python to avoid issues running the
