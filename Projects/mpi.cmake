@@ -5,6 +5,7 @@ IF(APPLE)
                     --prefix=<INSTALL_DIR>
                     --enable-shared
                     --disable-static
+                    --disable-vt
                     --enable-mpi-thread-multiple
                     --with-sge
                     --disable-mpi-interface-warning
@@ -18,7 +19,7 @@ ELSE()
 else()
   set(shared_args --disable-shared --enable-static)
 endif()
- 
+
   SET(MPI_EXTRA_CMDS "")
   # Check for presense of hcoll and fca
   SET(HCOLL_FOUND "FALSE")
@@ -49,14 +50,15 @@ endif()
                       ${shared_args}
                       --enable-mpi-thread-multiple
                       --with-sge
+                      --disable-vt
                       --disable-mpi-interface-warning
                       --enable-mpirun-prefix-by-default
                       --with-openib
                       --with-verbs
                       ${MPI_EXTRA_CMDS}
-                      #--with-hcoll=/opt/mellanox/hcoll 
-                      #--with-fca=/opt/mellanox/fca  
-                      #--with-mxm=/opt/mellnox/mxm  
+                      #--with-hcoll=/opt/mellanox/hcoll
+                      #--with-fca=/opt/mellanox/fca
+                      #--with-mxm=/opt/mellnox/mxm
                       #--with-knem=$(find /opt -maxdepth 1 -type d -name "knem*" -print0)
 
 
