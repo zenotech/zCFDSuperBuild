@@ -1,5 +1,10 @@
 
-add_external_project(
+# Check if we are on Cray
+set(_CRAYPE_ROOT "$ENV{CRAYPE_DIR}")
+
+if(NOT _CRAYPE_ROOT)
+
+  add_external_project(
   parmetis
   DEPENDS  mpi
 
@@ -13,3 +18,19 @@ add_external_project(
     -DCMAKE_CXX_COMPILER:FILEPATH=mpicxx
 )
 
+else()
+
+  add_external_project(
+  parmetis
+  DEPENDS  mpi
+
+  CMAKE_ARGS
+    -DMETIS_INSTALL:BOOL=ON 
+    -DCMAKE_BUILD_TYPE:STRING=Release
+    -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR> 
+    -DParMETIS_LIBRARY_TYPE:STRING=SHARED
+    -DMETIS_LIBRARY_TYPE:STRING=SHARED
+    -DCMAKE_C_COMPILER:FILEPATH=cc
+    -DCMAKE_CXX_COMPILER:FILEPATH=CC
+)
+endif()
