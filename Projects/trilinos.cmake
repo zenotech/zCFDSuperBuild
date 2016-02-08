@@ -21,21 +21,19 @@ add_external_project(
 	-DTPL_ParMETIS_LIBRARIES:STRING=${install_location}/lib/libparmetis.${_ext}-+-${install_location}/lib/libmetis.${_ext}
 	-DTPL_Scotch_INCLUDE_DIRS:PATH=<INSTALL_DIR>/include
 	-DTPL_Scotch_LIBRARIES:STRING=<INSTALL_DIR>/lib/libscotch.a;<INSTALL_DIR>/lib/libscotcherr.a;<INSTALL_DIR>/lib/libptscotch.a;<INSTALL_DIR>/lib/libptscotcherr.a
-	-DTPL_BLAS_LIBRARIES:FILEPATH=<INSTALL_DIR>/lib/libblas.${_ext}
-	-DTPL_LAPACK_LIBRARIES:FILEPATH=<INSTALL_DIR>/lib/liblapack.${_ext} 
-	-DTrilinos_ENABLE_Zoltan:BOOL=ON 
-	-DTrilinos_ENABLE_AztecOO:BOOL=ON 
-	-DTrilinos_ENABLE_Epetra:BOOL=ON 
-	-DEpetra_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Kokkos:BOOL=ON 
-	-DTrilinos_ENABLE_Teuchos:BOOL=ON 
-	-DTrilinos_ENABLE_Tpetra:BOOL=ON 
-	-DTrilinos_ENABLE_Ifpack:BOOL=ON 
-	-DTrilinos_ENABLE_Belos:BOOL=ON 
-	-DTrilinos_ENABLE_Anasazi:BOOL=ON 
-	-DTrilinos_ENABLE_ML:BOOL=ON 
-	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON 
+	-DTrilinos_ENABLE_Zoltan:BOOL=ON
+	-DTrilinos_ENABLE_AztecOO:BOOL=ON
+	-DTrilinos_ENABLE_Epetra:BOOL=ON
+	-DEpetra_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Kokkos:BOOL=ON
+	-DTrilinos_ENABLE_Teuchos:BOOL=ON
+	-DTrilinos_ENABLE_Tpetra:BOOL=ON
+	-DTrilinos_ENABLE_Ifpack:BOOL=ON
+	-DTrilinos_ENABLE_Belos:BOOL=ON
+	-DTrilinos_ENABLE_Anasazi:BOOL=ON
+	-DTrilinos_ENABLE_ML:BOOL=ON
+	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 
 )
 
@@ -62,21 +60,19 @@ add_external_project(
 	-DTPL_ParMETIS_LIBRARIES:STRING=${install_location}/lib/libparmetis.${_ext}-+-${install_location}/lib/libmetis.${_ext}
 	-DTPL_Scotch_INCLUDE_DIRS:PATH=<INSTALL_DIR>/include
 	-DTPL_Scotch_LIBRARIES:STRING=<INSTALL_DIR>/lib/libscotch.a;<INSTALL_DIR>/lib/libscotcherr.a;<INSTALL_DIR>/lib/libptscotch.a;<INSTALL_DIR>/lib/libptscotcherr.a
-	-DTPL_BLAS_LIBRARIES:FILEPATH=<INSTALL_DIR>/lib/libblas.${_ext}
-	-DTPL_LAPACK_LIBRARIES:FILEPATH=<INSTALL_DIR>/lib/liblapack.${_ext} 
-	-DTrilinos_ENABLE_Zoltan:BOOL=ON 
-	-DTrilinos_ENABLE_AztecOO:BOOL=ON 
-	-DTrilinos_ENABLE_Epetra:BOOL=ON 
-	-DEpetra_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Kokkos:BOOL=ON 
-	-DTrilinos_ENABLE_Teuchos:BOOL=ON 
-	-DTrilinos_ENABLE_Tpetra:BOOL=ON 
-	-DTrilinos_ENABLE_Ifpack:BOOL=ON 
-	-DTrilinos_ENABLE_Belos:BOOL=ON 
-	-DTrilinos_ENABLE_Anasazi:BOOL=ON 
-	-DTrilinos_ENABLE_ML:BOOL=ON 
-	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON 
+	-DTrilinos_ENABLE_Zoltan:BOOL=ON
+	-DTrilinos_ENABLE_AztecOO:BOOL=ON
+	-DTrilinos_ENABLE_Epetra:BOOL=ON
+	-DEpetra_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Kokkos:BOOL=ON
+	-DTrilinos_ENABLE_Teuchos:BOOL=ON
+	-DTrilinos_ENABLE_Tpetra:BOOL=ON
+	-DTrilinos_ENABLE_Ifpack:BOOL=ON
+	-DTrilinos_ENABLE_Belos:BOOL=ON
+	-DTrilinos_ENABLE_Anasazi:BOOL=ON
+	-DTrilinos_ENABLE_ML:BOOL=ON
+	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 
 )
 else()
@@ -100,21 +96,19 @@ add_external_project(
 	-DTPL_ParMETIS_LIBRARIES:STRING=${install_location}/lib/libparmetis.${_ext}-+-${install_location}/lib/libmetis.${_ext}
 	-DTPL_Scotch_INCLUDE_DIRS:PATH=<INSTALL_DIR>/include
 	-DTPL_Scotch_LIBRARIES:STRING=<INSTALL_DIR>/lib/libscotch.a;<INSTALL_DIR>/lib/libscotcherr.a;<INSTALL_DIR>/lib/libptscotch.a;<INSTALL_DIR>/lib/libptscotcherr.a
-	-DTPL_BLAS_LIBRARIES:FILEPATH=${BLAS_LIBRARIES}
-	-DTPL_LAPACK_LIBRARIES:FILEPATH=${LAPACK_LIBRARIES}
-	-DTrilinos_ENABLE_Zoltan:BOOL=ON 
-	-DTrilinos_ENABLE_AztecOO:BOOL=ON 
-	-DTrilinos_ENABLE_Epetra:BOOL=ON 
-	-DEpetra_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Fortran:BOOL=OFF 
-	-DTrilinos_ENABLE_Kokkos:BOOL=ON 
-	-DTrilinos_ENABLE_Teuchos:BOOL=ON 
-	-DTrilinos_ENABLE_Tpetra:BOOL=ON 
-	-DTrilinos_ENABLE_Ifpack:BOOL=ON 
-	-DTrilinos_ENABLE_Belos:BOOL=ON 
-	-DTrilinos_ENABLE_Anasazi:BOOL=ON 
-	-DTrilinos_ENABLE_ML:BOOL=ON 
-	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON 
+	-DTrilinos_ENABLE_Zoltan:BOOL=ON
+	-DTrilinos_ENABLE_AztecOO:BOOL=ON
+	-DTrilinos_ENABLE_Epetra:BOOL=ON
+	-DEpetra_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Fortran:BOOL=OFF
+	-DTrilinos_ENABLE_Kokkos:BOOL=ON
+	-DTrilinos_ENABLE_Teuchos:BOOL=ON
+	-DTrilinos_ENABLE_Tpetra:BOOL=ON
+	-DTrilinos_ENABLE_Ifpack:BOOL=ON
+	-DTrilinos_ENABLE_Belos:BOOL=ON
+	-DTrilinos_ENABLE_Anasazi:BOOL=ON
+	-DTrilinos_ENABLE_ML:BOOL=ON
+	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 )
 
 endif()

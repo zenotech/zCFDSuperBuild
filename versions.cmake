@@ -330,7 +330,7 @@ add_revision(scotch
 
 add_revision(threadworker
   GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
-  GIT_TAG v0.2.0)
+  GIT_TAG master)
 
 add_revision(highorder
     GIT_REPOSITORY git@github.com:zenotech/PV-HighOrder.git
