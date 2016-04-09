@@ -98,6 +98,11 @@ else()
   add_revision(python
     URL "http://packages.zenotech.com/Python-2.7.10.tgz"
     URL_MD5 "d7547558fd673bd9d38e2108c6b42521")
+
+#  add_revision(python
+#    URL "https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz"
+#    URL_MD5 "6b6076ec9e93f05dd63e47eb9c15728b")
+
 endif()
 
 add_revision(numpy
@@ -185,12 +190,18 @@ if (UNIX)
     URL_MD5 5eb18cf7a26d6e7048016cf9a8489b2e)
   else()
   # Added zCFD mpi
+  set(MPI_VENDOR "OPENMPI-1.6")
   add_revision(mpi
     URL "http://packages.zenotech.com/openmpi-1.6.5.tar.bz2"
     URL_MD5 03aed2a4aa4d0b27196962a2a65fc475)
 
-#    URL "http://packages.zenotech.com/openmpi-1.10.1.tar.bz2"
+#    set(MPI_VENDOR "OPENMPI-1.10")
+#    add_revision(mpi URL "http://packages.zenotech.com/openmpi-1.10.1.tar.bz2"
 #    URL_MD5 f0fcd77ed345b7eafb431968124ba16e)
+
+#    set(MPI_VENDOR "OPENMPI-2.0")
+# add_revision(mpi URL "https://www.open-mpi.org/software/ompi/v2.x/downloads/openmpi-2.0.0rc1.tar.bz2"
+# URL_MD5 5e79c74aba55726db23ae9134aa55657)
 
   #add_revision(mpi
   #  URL "http://paraview.org/files/dependencies/mpich2-1.4.1p1.tar.gz"
