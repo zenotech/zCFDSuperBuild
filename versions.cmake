@@ -190,16 +190,21 @@ if (UNIX)
     URL_MD5 5eb18cf7a26d6e7048016cf9a8489b2e)
   else()
   # Added zCFD mpi
-  set(MPI_VENDOR "OPENMPI-1.6")
+  if( NOT USE_SYSTEM_mpi)
+    set(MPI_VENDOR "OPENMPI-1.6")
+  endif()
   add_revision(mpi
     URL "http://packages.zenotech.com/openmpi-1.6.5.tar.bz2"
     URL_MD5 03aed2a4aa4d0b27196962a2a65fc475)
 
+#  if( NOT USE_SYSTEM_mpi)
 #    set(MPI_VENDOR "OPENMPI-1.10")
+#   endif()
 #    add_revision(mpi URL "http://packages.zenotech.com/openmpi-1.10.1.tar.bz2"
 #    URL_MD5 f0fcd77ed345b7eafb431968124ba16e)
-
+#  if( NOT USE_SYSTEM_mpi)
 #    set(MPI_VENDOR "OPENMPI-2.0")
+#   endif()
 # add_revision(mpi URL "https://www.open-mpi.org/software/ompi/v2.x/downloads/openmpi-2.0.0rc1.tar.bz2"
 # URL_MD5 5e79c74aba55726db23ae9134aa55657)
 
