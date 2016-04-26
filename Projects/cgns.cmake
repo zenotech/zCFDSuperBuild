@@ -10,11 +10,13 @@ add_external_project(
     ${CMAKE_COMMAND} -E copy_if_different ${SuperBuild_PROJECTS_DIR}/patches/cgns.src.CMakeLists.txt
 	                                        <SOURCE_DIR>/src/CMakeLists.txt
   CMAKE_ARGS
-  -DCGNS_BUILD_SHARED:BOOL=ON
+  -DCGNS_BUILD_SHARED:BOOL=${BUILD_SHARED_LIBS}
   -DENABLE_64BIT:BOOL=ON
   -DENABLE_HDF5:BOOL=ON
   -DHDF5_NEED_SZIP:BOOL=ON
   -DHDF5_NEED_ZLIB:BOOL=ON
+  -DCMAKE_C_COMPILER:STRING=mpicc
+  -DCMAKE_CXX_COMPILER:STRING=mpicxx
 )
 
 if (WIN32)

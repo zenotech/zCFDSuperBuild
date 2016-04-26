@@ -1,6 +1,6 @@
 # Consolidates platform independent stub for paraview.bundle.cmake files.
 
-include (paraview_version)
+#include (paraview_version)
 include (zcfd_version)
 
 # Enable CPack packaging.
@@ -19,7 +19,15 @@ else()
 endif()
 
 set(CPACK_PACKAGE_FILE_NAME
-    "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}-${package_suffix}")
+  "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}.${CPACK_PACKAGE_VERSION_PATCH}-${PACKAGE_SUFFIX}")
+
+# set the license file.
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_LIST_DIR}/paraview.license.txt")
+
+if (CMAKE_CL_64)
+  # Change default installation root path for Windows x64
+  set(CPACK_NSIS_INSTALL_ROOT "$PROGRAMFILES64")
+endif()
 
 # Don't import CPack yet, let the platform specific code get another chance at
 # changing the variables.

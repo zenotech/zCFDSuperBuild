@@ -1,11 +1,11 @@
-add_external_project(lapack
+add_external_project_or_use_system(lapack
   BUILD_IN_SOURCE 0
   CMAKE_ARGS
-    -DBUILD_SHARED_LIBS:BOOL=ON
+    -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}
     -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
     -DCMAKE_Fortran_COMPILER:FILEPATH=${CMAKE_Fortran_COMPILER}
   BUILD_COMMAND
-    make
+    make -j ${PV_MAKE_NCPUS}
   INSTALL_COMMAND
     make install
 )
