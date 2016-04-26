@@ -8,4 +8,4 @@ numpy==1.9.1
 #pycuda==
 colorama==0.3.2
 #nvidia-ml-py
-MyCluster==0.1.7
+MyCluster==0.1.8
