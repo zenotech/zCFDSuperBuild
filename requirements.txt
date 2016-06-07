@@ -11,22 +11,4 @@ colorama==0.3.2
 MyCluster>=0.2.0
 MyClusterUI>=0.1.2
 traitsui==5.0.0
-ipython
-traitlets
-pexpect
-backports.shutil_get_terminal_size
-pickleshare
-simplegeneric
-jupyter
-scipy
-# On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
-matplotlib
-tornado
-pyzmq
-mpld3
-fabric
-pandas
-jsonschema
-terminado
-bokeh
-svgwrite
+
