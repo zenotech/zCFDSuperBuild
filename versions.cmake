@@ -358,7 +358,10 @@ if (zCFD_FROM_GIT)
   add_revision(zcfd
     GIT_REPOSITORY git@github.com:zenotech/zCFD.git
     GIT_TAG "${zcfd_git_tag}")
-  #  GIT_TAG ${VERSION})
+  add_revision(zcfdcuda
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
+    GIT_TAG "${zcfd_git_tag}")
+   #  GIT_TAG ${VERSION})
 else()
   # Variables to hold the URL and MD5 (optional)
   set (zCFD_URL "" CACHE
@@ -370,8 +373,10 @@ else()
     # No URL specified raise error.
     message (FATAL_ERROR "zCFD_URL should have a valid URL or FilePath to a zCFD tarball")
   else()
-    # Download PV from source specified in URL
     add_revision(zcfd
+      URL ${zCFD_URL}
+      URL_MD5 ${zCFD_URL_MD5})
+    add_revision(zcfdcuda
       URL ${zCFD_URL}
       URL_MD5 ${zCFD_URL_MD5})
   endif()
