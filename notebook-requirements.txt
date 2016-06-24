@@ -17,3 +17,5 @@ jsonschema
 terminado
 bokeh
 svgwrite
+# For Jenkins
+junit-xml
