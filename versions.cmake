@@ -244,7 +244,7 @@ cmake_dependent_option(ParaView_FROM_SOURCE_DIR "Enable to use existing ParaView
 if (ParaView_FROM_GIT)
   # Download PV from GIT
   add_revision(paraview
-    GIT_REPOSITORY git@github.com:zenotech/ParaView.git
+    GIT_REPOSITORY https://github.com/zenotech/ParaView.git
     GIT_TAG "master")
 else()
   if (ParaView_FROM_SOURCE_DIR)
@@ -345,20 +345,23 @@ add_revision(scotch
   URL_MD5 5d912599c2521b1ecbcd8d12b68eef9c)
 
 add_revision(threadworker
-  GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
+  GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
   GIT_TAG master)
 
 add_revision(highorder
-    GIT_REPOSITORY git@github.com:zenotech/PV-HighOrder.git
+    GIT_REPOSITORY https://github.com/zenotech/PV-HighOrder.git
     GIT_TAG master)
 
 option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
 
 if (zCFD_FROM_GIT)
   add_revision(zcfd
-    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
+    GIT_REPOSITORY https://github.com/zenotech/zCFD.git
     GIT_TAG "${zcfd_git_tag}")
-  #  GIT_TAG ${VERSION})
+  add_revision(zcfdcuda
+    GIT_REPOSITORY https://github.com/zenotech/zCFD.git
+    GIT_TAG "${zcfd_git_tag}")
+   #  GIT_TAG ${VERSION})
 else()
   # Variables to hold the URL and MD5 (optional)
   set (zCFD_URL "" CACHE
@@ -370,8 +373,10 @@ else()
     # No URL specified raise error.
     message (FATAL_ERROR "zCFD_URL should have a valid URL or FilePath to a zCFD tarball")
   else()
-    # Download PV from source specified in URL
     add_revision(zcfd
+      URL ${zCFD_URL}
+      URL_MD5 ${zCFD_URL_MD5})
+    add_revision(zcfdcuda
       URL ${zCFD_URL}
       URL_MD5 ${zCFD_URL_MD5})
   endif()
