@@ -356,10 +356,10 @@ option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
 
 if (zCFD_FROM_GIT)
   add_revision(zcfd
-    GIT_REPOSITORY https://github.com/zenotech/zCFD.git
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
     GIT_TAG "${zcfd_git_tag}")
   add_revision(zcfdcuda
-    GIT_REPOSITORY https://github.com/zenotech/zCFD.git
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
     GIT_TAG "${zcfd_git_tag}")
    #  GIT_TAG ${VERSION})
 else()
