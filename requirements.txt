@@ -12,3 +12,4 @@ MyCluster>=0.2.0
 MyClusterUI>=0.1.2
 traitsui==5.0.0
 grizzled==0.9.4
+junit_xml==1.7
