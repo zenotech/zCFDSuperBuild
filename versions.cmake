@@ -63,7 +63,7 @@ add_revision(fontconfig
   URL_MD5 77e15a92006ddc2adbb06f840d591c0e)
 
 add_revision(qt4
-  URL "http://paraview.org/files/dependencies/qt-everywhere-opensource-src-4.8.6.tar.gz"
+  URL "http://download.qt.io/archive/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz"
   URL_MD5 2edbe4d6c2eff33ef91732602f3518eb)
 
 if (WIN32)
@@ -91,17 +91,9 @@ elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
     URL "http://www.paraview.org/files/dependencies/Python-2.7.3.tgz"
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
 else()
-  #add_revision(python
-  #  URL "http://paraview.org/files/dependencies/Python-2.7.2.tgz"
-  #  URL_MD5 "0ddfe265f1b3d0a8c2459f5bf66894c7")
-
   add_revision(python
-    URL "http://packages.zenotech.com/Python-2.7.10.tgz"
-    URL_MD5 "d7547558fd673bd9d38e2108c6b42521")
-
-#  add_revision(python
-#    URL "https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz"
-#    URL_MD5 "6b6076ec9e93f05dd63e47eb9c15728b")
+    URL "https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz"
+    URL_MD5 "88d61f82e3616a4be952828b3694109d")
 
 endif()
 
