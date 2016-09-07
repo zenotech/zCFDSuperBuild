@@ -26,6 +26,11 @@ elseif (APPLE)
               -sdk ${CMAKE_OSX_SYSROOT}
               -arch ${CMAKE_OSX_ARCHITECTURES}
               -qt-libpng)
+  # Apply patch
+  # https://github.com/Homebrew/patches/blob/master/qt/el-capitan.patch
+
+  
+
 endif()
 set(qt_EXTRA_CONFIGURATION_OPTIONS ""
     CACHE STRING "Extra arguments to be passed to Qt when configuring.")
@@ -78,6 +83,7 @@ add_external_project_or_use_system(
       -qt-libjpeg
       -qt-libtiff
       -release
+      -shared
       -system-zlib
       -xmlpatterns
       -I <INSTALL_DIR>/include
@@ -85,7 +91,7 @@ add_external_project_or_use_system(
       ${qt_options}
       ${qt_EXTRA_CONFIGURATION_OPTIONS}
       ${extra_commands}
-    BUILD_COMMAND make install
+    BUILD_COMMAND make -j${PV_MAKE_NCPUS} install
     INSTALL_COMMAND ""
 )
 unset(extra_commands)

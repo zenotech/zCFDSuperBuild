@@ -63,7 +63,7 @@ add_revision(fontconfig
   URL_MD5 77e15a92006ddc2adbb06f840d591c0e)
 
 add_revision(qt4
-  URL "http://paraview.org/files/dependencies/qt-everywhere-opensource-src-4.8.6.tar.gz"
+  URL "http://download.qt.io/archive/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz"
   URL_MD5 2edbe4d6c2eff33ef91732602f3518eb)
 
 if (WIN32)
@@ -91,17 +91,9 @@ elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
     URL "http://www.paraview.org/files/dependencies/Python-2.7.3.tgz"
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
 else()
-  #add_revision(python
-  #  URL "http://paraview.org/files/dependencies/Python-2.7.2.tgz"
-  #  URL_MD5 "0ddfe265f1b3d0a8c2459f5bf66894c7")
-
   add_revision(python
-    URL "http://packages.zenotech.com/Python-2.7.10.tgz"
-    URL_MD5 "d7547558fd673bd9d38e2108c6b42521")
-
-#  add_revision(python
-#    URL "https://www.python.org/ftp/python/2.7.11/Python-2.7.11.tgz"
-#    URL_MD5 "6b6076ec9e93f05dd63e47eb9c15728b")
+    URL "https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz"
+    URL_MD5 "88d61f82e3616a4be952828b3694109d")
 
 endif()
 
@@ -244,7 +236,7 @@ cmake_dependent_option(ParaView_FROM_SOURCE_DIR "Enable to use existing ParaView
 if (ParaView_FROM_GIT)
   # Download PV from GIT
   add_revision(paraview
-    GIT_REPOSITORY git@github.com:zenotech/ParaView.git
+    GIT_REPOSITORY https://github.com/zenotech/ParaView.git
     GIT_TAG "master")
 else()
   if (ParaView_FROM_SOURCE_DIR)
@@ -345,11 +337,11 @@ add_revision(scotch
   URL_MD5 5d912599c2521b1ecbcd8d12b68eef9c)
 
 add_revision(threadworker
-  GIT_REPOSITORY git@github.com:jappa/ThreadWorker.git
+  GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
   GIT_TAG master)
 
 add_revision(highorder
-    GIT_REPOSITORY git@github.com:zenotech/PV-HighOrder.git
+    GIT_REPOSITORY https://github.com/zenotech/PV-HighOrder.git
     GIT_TAG master)
 
 option(zCFD_FROM_GIT "If enabled then the repository is fetched from git" ON)
@@ -358,7 +350,10 @@ if (zCFD_FROM_GIT)
   add_revision(zcfd
     GIT_REPOSITORY git@github.com:zenotech/zCFD.git
     GIT_TAG "${zcfd_git_tag}")
-  #  GIT_TAG ${VERSION})
+  add_revision(zcfdcuda
+    GIT_REPOSITORY git@github.com:zenotech/zCFD.git
+    GIT_TAG "${zcfd_git_tag}")
+   #  GIT_TAG ${VERSION})
 else()
   # Variables to hold the URL and MD5 (optional)
   set (zCFD_URL "" CACHE
@@ -370,8 +365,10 @@ else()
     # No URL specified raise error.
     message (FATAL_ERROR "zCFD_URL should have a valid URL or FilePath to a zCFD tarball")
   else()
-    # Download PV from source specified in URL
     add_revision(zcfd
+      URL ${zCFD_URL}
+      URL_MD5 ${zCFD_URL_MD5})
+    add_revision(zcfdcuda
       URL ${zCFD_URL}
       URL_MD5 ${zCFD_URL_MD5})
   endif()
