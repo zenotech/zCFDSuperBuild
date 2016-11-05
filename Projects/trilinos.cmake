@@ -33,7 +33,8 @@ add_external_project(
 	-DTrilinos_ENABLE_Belos:BOOL=ON
 	-DTrilinos_ENABLE_Anasazi:BOOL=ON
 	-DTrilinos_ENABLE_ML:BOOL=ON
-	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
+	-DZoltan_ENABLE_ULLONG_IDS:BOOL=ON
+        -DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 
 )
 
@@ -72,6 +73,7 @@ add_external_project(
 	-DTrilinos_ENABLE_Belos:BOOL=ON
 	-DTrilinos_ENABLE_Anasazi:BOOL=ON
 	-DTrilinos_ENABLE_ML:BOOL=ON
+	-DZoltan_ENABLE_ULLONG_IDS:BOOL=ON
 	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 
 )
@@ -108,6 +110,7 @@ add_external_project(
 	-DTrilinos_ENABLE_Belos:BOOL=ON
 	-DTrilinos_ENABLE_Anasazi:BOOL=ON
 	-DTrilinos_ENABLE_ML:BOOL=ON
+	-DZoltan_ENABLE_ULLONG_IDS:BOOL=ON
 	-DEpetraExt_BUILD_GRAPH_REORDERING:BOOL=ON
 )
 

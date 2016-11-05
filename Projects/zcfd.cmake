@@ -6,7 +6,9 @@ add_external_project(
   # DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python #paraview paraviewsdk
 
   #UPDATE_COMMAND git pull
-
+  DOWNLOAD_COMMAND ""
+  SOURCE_DIR "../zCFD"
+ 
   CMAKE_ARGS
 	-DBUILD_CUDA:BOOL=OFF 
 	-DBoost_NO_SYSTEM_PATHS:BOOL=ON 
@@ -21,6 +23,8 @@ add_external_project(
   zcfd 
   DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk highorder cgns ccmio qt4
 
+  DOWNLOAD_COMMAND ""
+  SOURCE_DIR "../zCFD"
   #UPDATE_COMMAND git pull
 
   CMAKE_ARGS

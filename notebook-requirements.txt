@@ -17,5 +17,6 @@ jsonschema
 terminado
 bokeh
 svgwrite
+pysqlite
 # For Jenkins
 junit-xml

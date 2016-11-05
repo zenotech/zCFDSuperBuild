@@ -314,6 +314,7 @@ else()
     include(threadworker)
     include(highorder)
     include(zcfd)
+    include(zcfddeps)
     include(zcfdcuda)
   endif()
 
