@@ -41,6 +41,9 @@ add_revision(hdf5
 #  URL "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.0-patch1/src/hdf5-1.10.0-patch1.tar.bz2"
 #  URL_MD5 f6d980febe2c35c11670a9b34fa3b487)
 
+add_revision(openssl
+  URL "https://www.openssl.org/source/openssl-1.1.0c.tar.gz"
+  URL_MD5 601e8191f72b18192a937ecf1a800f3f)
 
 add_revision(silo
   URL "http://paraview.org/files/dependencies/silo-4.9.1-bsd.tar.gz"
