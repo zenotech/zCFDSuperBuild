@@ -2,7 +2,7 @@
 # configure stage.
 set (zcfd_version_major 2016)
 set (zcfd_version_minor 3)
-set (zcfd_version_patch 0)
+set (zcfd_version_patch 2)
 set (zcfd_version_suffix)
 set (zcfd_version "${zcfd_version_major}.${zcfd_version_minor}")
 set (zcfd_git_tag "develop")
