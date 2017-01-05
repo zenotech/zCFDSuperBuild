@@ -102,6 +102,10 @@ else()
     URL "https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz"
     URL_MD5 "88d61f82e3616a4be952828b3694109d")
 
+#  add_revision(python
+#    URL "https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz"
+#    URL_MD5 "17add4bf0ad0ec2f08e0cae6d205c700")
+
 endif()
 
 add_revision(numpy
@@ -244,7 +248,7 @@ if (ParaView_FROM_GIT)
   # Download PV from GIT
   add_revision(paraview
     GIT_REPOSITORY https://github.com/zenotech/ParaView.git
-    GIT_TAG "master")
+    GIT_TAG "pv44")
 else()
   if (ParaView_FROM_SOURCE_DIR)
     add_customizable_revision(paraview
