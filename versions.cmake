@@ -241,7 +241,7 @@ if (ParaView_FROM_GIT)
   # Download PV from GIT
   add_revision(paraview
     GIT_REPOSITORY https://github.com/zenotech/ParaView.git
-    GIT_TAG "master")
+    GIT_TAG "pv44")
 else()
   if (ParaView_FROM_SOURCE_DIR)
     add_customizable_revision(paraview
