@@ -99,12 +99,8 @@ elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
 else()
   add_revision(python
-    URL "https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz"
-    URL_MD5 "88d61f82e3616a4be952828b3694109d")
-
-#  add_revision(python
-#    URL "https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz"
-#    URL_MD5 "17add4bf0ad0ec2f08e0cae6d205c700")
+    URL "https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz"
+    URL_MD5 "17add4bf0ad0ec2f08e0cae6d205c700")
 
 endif()
 
