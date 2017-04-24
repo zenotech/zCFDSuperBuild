@@ -41,6 +41,9 @@ add_revision(hdf5
 #  URL "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.0-patch1/src/hdf5-1.10.0-patch1.tar.bz2"
 #  URL_MD5 f6d980febe2c35c11670a9b34fa3b487)
 
+add_revision(openssl
+  URL "https://www.openssl.org/source/openssl-1.1.0c.tar.gz"
+  URL_MD5 601e8191f72b18192a937ecf1a800f3f)
 
 add_revision(silo
   URL "http://paraview.org/files/dependencies/silo-4.9.1-bsd.tar.gz"
@@ -96,8 +99,8 @@ elseif (CROSS_BUILD_STAGE STREQUAL "CROSS")
     URL_MD5 "2cf641732ac23b18d139be077bd906cd")
 else()
   add_revision(python
-    URL "https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz"
-    URL_MD5 "88d61f82e3616a4be952828b3694109d")
+    URL "https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz"
+    URL_MD5 "17add4bf0ad0ec2f08e0cae6d205c700")
 
 endif()
 

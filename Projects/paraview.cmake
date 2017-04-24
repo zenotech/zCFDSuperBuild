@@ -44,6 +44,7 @@ foreach (plugin IN LISTS plugins)
 endforeach ()
 
 add_external_project(paraview
+  DEPENDS freetype
   DEPENDS_OPTIONAL
     adios boost cosmotools ffmpeg hdf5 libxml3 manta matplotlib mpi numpy png python qt4 qt5 visitbridge zlib silo cgns xdmf3
     mesa osmesa nektarreader netcdf
