@@ -8,8 +8,17 @@ endif()
 add_external_project_or_use_system(osmesa
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
-                    --with-driver=osmesa
-                    --with-gallium-drivers=
+                    --enable-osmesa
+                    --enable-glx=xlib
+                    --disable-dri
+                    --disable-dri3
+                    --disable-driglx-direct
+                    # to keep mesa from requiring LLVM
+                    --disable-gallium-llvm
+                    --disable-llvm
+                    --disable-gbm
+                    --disable-egl
+                    --with-gallium-drivers=swrast
                     ${shared_args}
   BUILD_IN_SOURCE 1
 )
