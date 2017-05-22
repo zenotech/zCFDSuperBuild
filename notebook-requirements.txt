@@ -3,7 +3,7 @@ traitlets==4.3.2
 pexpect==4.2.1
 backports.shutil-get-terminal-size==1.0.0
 pickleshare==0.7.4
-simplegeneric
+simplegeneric==0.8.1
 jupyter
 scipy
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
