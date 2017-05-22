@@ -205,8 +205,8 @@ elseif (WIN32)
 endif()
 
 add_revision(osmesa
-    URL "https://mesa.freedesktop.org/archive/mesa-17.1.0.tar.gz"
-    URL_MD5 d288cfcd1cfec3907100af48d2f34cff)
+    URL "https://mesa.freedesktop.org/archive/mesa-17.0.6.tar.gz"
+    URL_MD5 05a111fad5297025e5e47c1d6f8ab79f)
 
 
 # ----------------------------------------------------------------------------

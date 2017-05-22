@@ -9,7 +9,7 @@ add_external_project_or_use_system(osmesa
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-osmesa
-                    --enable-glx=xlib
+                    --disable-glx
                     --disable-dri
                     --disable-dri3
                     --disable-driglx-direct
