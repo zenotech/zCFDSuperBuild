@@ -3,7 +3,7 @@ snakemq==1.2
 cgen==2016.2.3
 jinja2==2.9.6
 codepy==2013.1.2
-PyYAML==3.11
+PyYAML==3.12
 numpy==1.9.1
 #pycuda==
 colorama==0.3.2
