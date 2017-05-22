@@ -1,7 +1,7 @@
 ipython==6.0.0
 traitlets==4.3.2
 pexpect==4.2.1
-backports.shutil_get_terminal_size
+backports.shutil-get-terminal-size==1.0.0
 pickleshare
 simplegeneric
 jupyter
