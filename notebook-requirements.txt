@@ -16,7 +16,7 @@ pandas==0.20.1
 jsonschema==2.6.0
 terminado==0.6
 bokeh==0.12.5
-svgwrite
+svgwrite==1.1.10
 pysqlite
 # For Jenkins
 junit-xml
