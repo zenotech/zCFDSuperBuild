@@ -2,7 +2,7 @@ ipython==6.1.0
 traitlets==4.3.2
 pexpect
 backports.shutil_get_terminal_size
-pickleshare
+pickleshare==0.7.4
 simplegeneric
 jupyter
 scipy
