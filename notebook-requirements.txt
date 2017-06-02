@@ -13,7 +13,7 @@ pyzmq
 mpld3
 fabric
 pandas
-jsonschema
+jsonschema==2.6.0
 terminado
 bokeh
 svgwrite
