@@ -7,7 +7,7 @@ simplegeneric
 jupyter
 scipy
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
-matplotlib
+matplotlib==2.0.2
 tornado
 pyzmq
 mpld3
