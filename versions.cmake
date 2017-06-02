@@ -17,18 +17,18 @@ add_revision(bzip2
 
 
 add_revision(zlib
-  URL "http://www.paraview.org/files/dependencies/zlib-1.2.7.tar.gz"
-  URL_MD5 60df6a37c56e7c1366cca812414f7b85)
+  URL "http://zlib.net/zlib-1.2.11.tar.gz"
+  URL_MD5 1c9f62f0778697a09d36121ead88e08e)
 # NOTE: if updating zlib version, fix patch in zlib.cmake
 
 
 add_revision(png
-  URL "http://paraview.org/files/dependencies/libpng-1.4.8.tar.gz"
-  URL_MD5 49c6e05be5fa88ed815945d7ca7d4aa9)
+  URL "http://download.sourceforge.net/libpng/libpng-1.6.29.tar.gz"
+  URL_MD5 68553080685f812d1dd7a6b8215c37d8)
 
 add_revision(freetype
-  URL "http://paraview.org/files/dependencies/freetype-2.4.8.tar.gz"
-  URL_MD5 "5d82aaa9a4abc0ebbd592783208d9c76")
+  URL "https://download.savannah.gnu.org/releases/freetype/freetype-2.8.tar.gz"
+  URL_MD5 c89c00767f939bff559d5dad326c1355)
 
 add_revision(szip
   URL "http://paraview.org/files/dependencies/szip-2.1.tar.gz"
@@ -42,8 +42,8 @@ add_revision(hdf5
 #  URL_MD5 f6d980febe2c35c11670a9b34fa3b487)
 
 add_revision(openssl
-  URL "https://www.openssl.org/source/openssl-1.1.0c.tar.gz"
-  URL_MD5 601e8191f72b18192a937ecf1a800f3f)
+  URL "https://www.openssl.org/source/openssl-1.1.0e.tar.gz"
+  URL_MD5 51c42d152122e474754aea96f66928c6)
 
 add_revision(silo
   URL "http://paraview.org/files/dependencies/silo-4.9.1-bsd.tar.gz"
@@ -66,8 +66,8 @@ add_revision(libxml2
   URL_MD5 8127a65e8c3b08856093099b52599c86)
 
 add_revision(fontconfig
-  URL "http://paraview.org/files/dependencies/fontconfig-2.8.0.tar.gz"
-  URL_MD5 77e15a92006ddc2adbb06f840d591c0e)
+  URL "https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.1.tar.gz"
+  URL_MD5 ce55e525c37147eee14cc2de6cc09f6c)
 
 add_revision(qt4
   URL "http://download.qt.io/archive/qt/4.8/4.8.6/qt-everywhere-opensource-src-4.8.6.tar.gz"
@@ -146,27 +146,14 @@ add_revision(snakemq
   URL "https://pypi.python.org/packages/source/s/snakeMQ/snakeMQ-1.2.tar.gz"
   URL_MD5 1bf0c94dfc85dfc44428157b80780595)
 
-if (UBUNTU)
-#  add_revision(boost
-#    URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
-#    URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
-  add_revision(boost
-    URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
-    URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
-elseif (POWER8)
+if (POWER8)
   add_revision(boost
     URL "http://packages.zenotech.com/boost_1_55_0-power8.tar.gz"
     URL_MD5 b18d3c174ecd9df0cc1e4ff62018622e)
 else()
-#  add_revision(boost
-#     URL "http://packages.zenotech.com/boost_1_55_0.tar.bz2"
-#     URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354)
-#  add_revision(boost
-#     URL "http://packages.zenotech.com/boost_1_53_0.tar.bz2"
-#     URL_MD5 a00d22605d5dbcfb4c9936a9b35bc4c2)
   add_revision(boost
-    URL "http://packages.zenotech.com/boost_1_57_0.tar.bz2"
-    URL_MD5 1be49befbdd9a5ce9def2983ba3e7b76)
+      URL "https://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2Ffiles%2Fboost%2F1.64.0%2F&ts=1495103162"
+    URL_MD5 319c6ffbbeccc366f14bb68767a6db79)
 endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
 #  URL_MD5 dbc07ab0254df3dda6300fd737b3f264)
@@ -217,21 +204,9 @@ elseif (WIN32)
     URL_MD5 7253c2a43445fbce2bf4f1dfbac113ad)
 endif()
 
-if (CROSS_BUILD_STAGE STREQUAL "CROSS")
-  add_revision(mesa
-    URL "http://www.paraview.org/files/dependencies/MesaLib-7.6.1.tar.gz"
-    URL_MD5 e80fabad2e3eb7990adae773d6aeacba)
-else()
-  add_revision(mesa
-    URL "http://paraview.org/files/dependencies/MesaLib-7.11.2.tar.gz"
-    URL_MD5 b9e84efee3931c0acbccd1bb5a860554)
-endif()
-
-# We stick with 7.11.2 for Mesa version for now. Newer mesa doesn't seem to
-# build correctly with certain older compilers (e.g. on neser).
 add_revision(osmesa
-    URL "http://paraview.org/files/dependencies/MesaLib-7.11.2.tar.gz"
-    URL_MD5 b9e84efee3931c0acbccd1bb5a860554)
+    URL "https://mesa.freedesktop.org/archive/mesa-17.0.6.tar.gz"
+    URL_MD5 05a111fad5297025e5e47c1d6f8ab79f)
 
 
 # ----------------------------------------------------------------------------
@@ -344,7 +319,7 @@ add_revision(scotch
   URL_MD5 5d912599c2521b1ecbcd8d12b68eef9c)
 
 add_revision(threadworker
-  GIT_REPOSITORY https://github.com/jappa/ThreadWorker.git
+  GIT_REPOSITORY https://github.com/zenotech/ThreadWorker.git
   GIT_TAG master)
 
 add_revision(highorder
