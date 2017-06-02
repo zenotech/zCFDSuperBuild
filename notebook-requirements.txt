@@ -19,4 +19,4 @@ bokeh
 svgwrite
 pysqlite
 # For Jenkins
-junit-xml
+junit-xml==1.7
