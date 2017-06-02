@@ -11,7 +11,7 @@ matplotlib==2.0.2
 tornado
 pyzmq
 mpld3
-fabric
+fabric==1.13.2
 pandas==0.20.1
 jsonschema==2.6.0
 terminado
