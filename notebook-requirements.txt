@@ -12,7 +12,7 @@ tornado
 pyzmq
 mpld3
 fabric
-pandas
+pandas==0.20.1
 jsonschema
 terminado
 bokeh
