@@ -9,7 +9,7 @@ else()
 endif()
 
 add_external_project_or_use_system(python
-  DEPENDS bzip2 zlib png 
+  DEPENDS bzip2 zlib png openssl
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
