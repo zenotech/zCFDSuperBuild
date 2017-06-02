@@ -5,7 +5,7 @@ backports.shutil_get_terminal_size
 pickleshare
 simplegeneric
 jupyter
-scipy
+scipy==0.19.0
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
 matplotlib
 tornado
