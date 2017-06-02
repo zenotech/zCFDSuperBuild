@@ -1,4 +1,4 @@
-ipython
+ipython==6.1.0
 traitlets
 pexpect
 backports.shutil_get_terminal_size
