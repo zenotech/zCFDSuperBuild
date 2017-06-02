@@ -1,6 +1,6 @@
 ipython==6.1.0
 traitlets
-pexpect
+pexpect==4.2.1
 backports.shutil_get_terminal_size
 pickleshare
 simplegeneric
