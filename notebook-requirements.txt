@@ -9,7 +9,7 @@ scipy
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
 matplotlib
 tornado
-pyzmq
+pyzmq==16.0.2
 mpld3
 fabric
 pandas
