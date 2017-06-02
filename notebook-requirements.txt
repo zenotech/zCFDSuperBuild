@@ -1,5 +1,5 @@
 ipython
-traitlets
+traitlets==4.3.2
 pexpect
 backports.shutil_get_terminal_size
 pickleshare
