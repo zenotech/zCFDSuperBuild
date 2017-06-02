@@ -14,7 +14,7 @@ mpld3
 fabric
 pandas
 jsonschema
-terminado
+terminado==0.6
 bokeh
 svgwrite
 pysqlite
