@@ -6,7 +6,7 @@ codepy==2013.1.2
 PyYAML==3.11
 numpy==1.9.1
 #pycuda==
-colorama==0.3.2
+colorama==0.3.9
 #nvidia-ml-py
 MyCluster>=0.2.0
 #MyClusterUI>=0.1.2
