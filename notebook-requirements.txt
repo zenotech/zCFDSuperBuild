@@ -8,7 +8,7 @@ jupyter
 scipy
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
 matplotlib
-tornado
+tornado==4.5.1
 pyzmq
 mpld3
 fabric
