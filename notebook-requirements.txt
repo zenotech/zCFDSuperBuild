@@ -10,7 +10,7 @@ scipy==0.19.0
 matplotlib==2.0.2
 tornado
 pyzmq
-mpld3
+mpld3==0.3
 fabric==1.13.2
 pandas==0.20.1
 jsonschema==2.6.0
