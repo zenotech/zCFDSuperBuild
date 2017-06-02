@@ -10,7 +10,7 @@ scipy
 matplotlib
 tornado
 pyzmq
-mpld3
+mpld3==0.3
 fabric
 pandas
 jsonschema
