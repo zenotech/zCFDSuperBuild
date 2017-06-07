@@ -1,5 +1,5 @@
 mpi4py==2.0.0
-snakemq==1.2
+snakemq==1.3
 cgen==2016.2.3
 jinja2==2.9.6
 codepy==2013.1.2
