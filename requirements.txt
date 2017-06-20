@@ -13,3 +13,4 @@ MyCluster>=0.2.0
 traitsui==5.1.0
 grizzled==0.9.4
 junit_xml==1.7
+voluptuous==0.10.5
