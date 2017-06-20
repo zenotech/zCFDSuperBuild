@@ -38,8 +38,8 @@ add_revision(szip
   URL_MD5 902f831bcefb69c6b635374424acbead)
 
 add_revision(hdf5
-  URL "https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.18.tar.bz2"
-  URL_MD5 29117bf488887f89888f9304c8ebea0b)
+  URL "https://support.hdfgroup.org/ftp/HDF5/current18/src/hdf5-1.8.19.tar.bz2"
+  URL_MD5 6f0353ee33e99089c110a1c8d2dd1b22)
 
 #  URL "https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.10/hdf5-1.10.0-patch1/src/hdf5-1.10.0-patch1.tar.bz2"
 #  URL_MD5 f6d980febe2c35c11670a9b34fa3b487)
