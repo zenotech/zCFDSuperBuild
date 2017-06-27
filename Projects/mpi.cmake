@@ -13,7 +13,7 @@ if(NOT POWER8)
   IF( FCA_FOUND STREQUAL "TRUE")
     SET(MPI_EXTRA_CMDS "${MPI_EXTRA_CMDS} --with-fca=/opt/mellanox/fca")
   ENDIF()
-endif
+endif()
 SET(MXM_FOUND "FALSE")
 execute_process(COMMAND "if [ -d /opt/mellanox/mxm ]; then echo TRUE; else echo FALSE fi;" OUTPUT_VARIABLE MXM_FOUND)
 IF( MXM_FOUND STREQUAL "TRUE")
