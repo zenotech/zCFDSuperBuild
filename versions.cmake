@@ -155,7 +155,7 @@ add_revision(snakemq
 #    URL_MD5 b18d3c174ecd9df0cc1e4ff62018622e)
 #else()
   add_revision(boost
-      URL "https://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2Ffiles%2Fboost%2F1.64.0%2F&ts=1495103162"
+    URL "https://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.gz"
     URL_MD5 319c6ffbbeccc366f14bb68767a6db79)
 #endif()
 #  URL "http://www.paraview.org/files/dependencies/boost_1_50_0.tar.gz"
