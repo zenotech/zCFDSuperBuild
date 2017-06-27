@@ -174,9 +174,15 @@ add_revision(manta
 
 if (UNIX)
   if(POWER8)
+    #  add_revision(mpi
+    #URL "http://packages.zenotech.com/openmpi-1.6.5-power8.tar.gz"
+    #URL_MD5 5eb18cf7a26d6e7048016cf9a8489b2e)
+
       add_revision(mpi
-    URL "http://packages.zenotech.com/openmpi-1.6.5-power8.tar.gz"
-    URL_MD5 5eb18cf7a26d6e7048016cf9a8489b2e)
+      URL "http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3a.tar.gz"
+      URL_MD5 87c3fbf8a755b53806fa9ecb21453445)
+
+      set(MPI_VENDOR "MVAPICH")
   else()
   # Added zCFD mpi
   if( NOT USE_SYSTEM_mpi)
