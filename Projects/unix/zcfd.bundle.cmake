@@ -89,12 +89,13 @@ if (mpi_ENABLED AND NOT USE_SYSTEM_mpi)
           PATTERN "opal*"
           PATTERN "orte*"
         )
-  # install the mpi configuration files needed for mpiexec.
-  install(DIRECTORY "${install_location}/share/openmpi"
-          DESTINATION "share"
-          USE_SOURCE_PERMISSIONS
-          COMPONENT ParaView)
-
+  if(MPIVENDOR MATCHES "^OPENMPI")
+    # install the mpi configuration files needed for mpiexec.
+    install(DIRECTORY "${install_location}/share/openmpi"
+            DESTINATION "share"
+            USE_SOURCE_PERMISSIONS
+            COMPONENT ParaView)
+  endif()
   install(DIRECTORY "${install_location}/etc/"
           DESTINATION "etc"
           USE_SOURCE_PERMISSIONS
