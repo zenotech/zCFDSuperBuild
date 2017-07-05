@@ -1,0 +1,22 @@
+ipython==5.4.1
+traitlets==4.3.2
+pexpect==4.2.1
+backports.shutil-get-terminal-size==1.0.0
+pickleshare==0.7.4
+simplegeneric==0.8.1
+jupyter==1.0.0
+scipy==0.19.0
+# On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
+matplotlib==2.0.2
+tornado==4.5.1
+pyzmq==16.0.2
+mpld3==0.3
+fabric==1.13.2
+pandas==0.20.1
+jsonschema==2.6.0
+terminado==0.6
+bokeh==0.12.5
+svgwrite==1.1.11
+pysqlite==2.8.3
+# For Jenkins
+junit-xml==1.7
