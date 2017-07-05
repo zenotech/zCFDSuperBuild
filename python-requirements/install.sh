@@ -29,7 +29,7 @@
 #export FC=ftn
 
   # Install requirements
-  ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+  CC="mpicc" ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
   # Force reinstall
   #${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
   # Install notebook
