@@ -11,7 +11,7 @@
   # Upgrade pip
   ${PREFIX}/bin/python ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org pip
 
-  PIPOPTS="--no-clean --global-option=build_ext --global-option=-I${PWD}/include --global-option=-L${PWD}/lib"
+  PIPOPTS="--no-clean --global-option=build_ext --global-option=-I$${PREFIX}/include --global-option=-L${PREFIX}/lib"
 
   # Install yolk
   ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org yolk
@@ -31,7 +31,7 @@
   # Install requirements
   ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
   # Force reinstall
-  ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+  #${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
   # Install notebook
   ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r notebook-requirements.txt
 
