@@ -308,8 +308,8 @@ add_revision(netcdf
   URL_MD5 503a2d6b6035d116ed53b1d80c811bda)
 
 add_revision(netcdfcpp
-  URL https://github.com/Unidata/netcdf-cxx4/archive/v4.3.0.tar.gz 
-  URL_MD5 f840a75d3c68390fb7392be5c3f663cd)
+  URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
+  URL_MD5 d32b20c00f144ae6565d9e98d9f6204c)
 
 
 add_revision(mxml
