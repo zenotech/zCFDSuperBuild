@@ -1,13 +1,7 @@
 add_external_project_or_use_system(netcdfcpp
   DEPENDS netcdf
 
-  CMAKE_ARGS
-  	-DCMAKE_C_COMPILER:FILEPATH=mpicc
-	-DCMAKE_CXX_COMPILER:FILEPATH=mpicxx
-    -DBUILD_SHARED_LIBS:BOOL=${BUILD_SHARED_LIBS}
-    -DBUILD_TESTING:BOOL=FALSE
-    -DBUILD_UTILITIES:BOOL=FALSE
-    -DUSE_SZIP:BOOL=OFF
-    -DENABLE_DAP:BOOL=OFF
-    -DHDF5_DIR:FILEPATH=<INSTALL_DIR>/share/cmake
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure
+                    --prefix=<INSTALL_DIR> 
+
 )
