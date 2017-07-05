@@ -307,7 +307,7 @@ add_revision(netcdf
   URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz 
   URL_MD5 503a2d6b6035d116ed53b1d80c811bda)
 
-add_revision(netcdfc++
+add_revision(netcdfcpp
   URL https://github.com/Unidata/netcdf-cxx4/archive/v4.3.0.tar.gz 
   URL_MD5 f840a75d3c68390fb7392be5c3f663cd)
 
