@@ -299,9 +299,18 @@ add_revision(lapack
   URL "http://paraview.org/files/dependencies/lapack-3.4.2.tgz"
   URL_MD5 61bf1a8a4469d4bdb7604f5897179478)
 
+#add_revision(netcdf
+#  URL http://www.paraview.org/files/dependencies/netcdf-4.3.2.modified.tar.gz
+#  URL_MD5 1841196c2bfcf10246966eecf92ad0ec)
+
 add_revision(netcdf
-  URL http://www.paraview.org/files/dependencies/netcdf-4.3.2.modified.tar.gz
-  URL_MD5 1841196c2bfcf10246966eecf92ad0ec)
+  URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz 
+  URL_MD5 503a2d6b6035d116ed53b1d80c811bda)
+
+add_revision(netcdfc++
+  URL https://github.com/Unidata/netcdf-cxx4/archive/v4.3.0.tar.gz 
+  URL_MD5 f840a75d3c68390fb7392be5c3f663cd)
+
 
 add_revision(mxml
   URL http://www.paraview.org/files/dependencies/mxml-2.9.tar.gz
