@@ -1,4 +1,4 @@
-add_external_project_or_use_system(netcdfc++
+add_external_project_or_use_system(netcdfcpp
   DEPENDS netcdf
 
   CMAKE_ARGS
