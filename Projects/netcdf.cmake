@@ -9,4 +9,5 @@ add_external_project_or_use_system(netcdf
     -DBUILD_UTILITIES:BOOL=FALSE
     -DUSE_SZIP:BOOL=OFF
     -DENABLE_DAP:BOOL=OFF
+    -DHDF5_DIR:FILEPATH=<INSTALL_DIR>/share/cmake
 )
