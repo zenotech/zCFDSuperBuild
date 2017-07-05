@@ -6,5 +6,6 @@ add_external_project(
   DOWNLOAD_COMMAND ""
   SOURCE_DIR "../zCFDSuperBuild/python-requirements"
   CONFIGURE_COMMAND ""
-  BUILD_COMMAND cd <SOURCE_DIR> && export prefix=<INSTALL_DIR> && bash install.sh
+  BUILD_COMMAND "bash -c \"cd <SOURCE_DIR> && export PREFIX=<INSTALL_DIR> && bash install.sh\""
+  INSTALL_COMMAND ""
 )
