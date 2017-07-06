@@ -1,5 +1,5 @@
 
-et(C_COMP mpicc)
+set(C_COMP mpicc)
 set(CC_COMP mpicxx)
 if(DEFINED ENV{CRAYOS_VERSION})
   set(C_COMP cc)
