@@ -308,8 +308,8 @@ add_revision(netcdf
   URL_MD5 503a2d6b6035d116ed53b1d80c811bda)
 
 add_revision(netcdfcpp
-  URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
-  URL_MD5 d32b20c00f144ae6565d9e98d9f6204c)
+  URL http://packages.zenotech.com/netcdf-cxx-4.2.tar.gz
+  URL_MD5 fbd422bf5bfe964c9fda68e074455650)
 
 add_revision(libffi
   URL ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
