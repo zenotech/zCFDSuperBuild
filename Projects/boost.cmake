@@ -23,10 +23,10 @@ else()
   if(DEFINED ENV{CRAYOS_VERSION})
     set(extra_commands --with-toolset=gcc)
     if($ENV{PE_ENV} STREQUAL "CRAY")
-      set(patch_cmd "echo \"using cray : : CC ; \" >> <SOURCE_DIR>/tools/build/src/user-config.jam")
+      set(patch_cmd "echo \\"using cray : : CC ; \\" >> <SOURCE_DIR>/tools/build/src/user-config.jam")
       set(bjam_extra_commands toolset=cray)
     else()
-      set(patch_cmd "echo \"using gcc : : CC ; \" >> <SOURCE_DIR>/tools/build/src/user-config.jam")
+      set(patch_cmd "echo \\"using gcc : : CC ; \\" >> <SOURCE_DIR>/tools/build/src/user-config.jam")
       set(bjam_extra_commands toolset=gcc)
     endif()
   else()  
@@ -44,7 +44,7 @@ endif()
 add_external_project_or_use_system(boost
   DEPENDS zlib bzip2 python pythonrequirements
   BUILD_IN_SOURCE 1
-  PATCH_COMMAND ${CMAKE_COMMAND} -E ${patch_cmd}
+  PATCH_COMMAND bash -c ${patch_cmd}
   CONFIGURE_COMMAND
     <SOURCE_DIR>/bootstrap.sh --prefix=<INSTALL_DIR>
                               --with-python=<INSTALL_DIR>/bin/python
