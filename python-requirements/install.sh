@@ -1,5 +1,9 @@
 #!/bin/bash -f
 
+
+# Terminate script on first error
+set -e
+
 # This script assumes we are in the install directory
 
 # Install pip
