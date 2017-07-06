@@ -28,8 +28,20 @@
 #export CXX=CC
 #export FC=ftn
 
-  # Install requirements
-  CC="mpicc" ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+  if [[ -n "$CRAYOS_VERSION" ]]; then
+    cat >> mpi.cfg <<EOF
+[cray]
+mpicc = cc
+mpicxx = CC
+extra_link_args = -shared
+EOF
+      # Install requirements
+      MPICFG=cray ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+  else
+      # Install requirements
+      CC="mpicc" ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+  fi
+
   # Force reinstall
   #${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
   # Install notebook
