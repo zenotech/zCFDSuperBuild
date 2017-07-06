@@ -311,6 +311,10 @@ add_revision(netcdfcpp
   URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-cxx-4.2.tar.gz
   URL_MD5 d32b20c00f144ae6565d9e98d9f6204c)
 
+add_revision(libffi
+  URL ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz
+  URL_MD5 83b89587607e3eb65c70d361f13bab43)
+
 
 add_revision(mxml
   URL http://www.paraview.org/files/dependencies/mxml-2.9.tar.gz

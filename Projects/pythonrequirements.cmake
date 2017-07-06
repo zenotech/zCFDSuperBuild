@@ -1,7 +1,7 @@
 
 add_external_project(
   pythonrequirements 
-  DEPENDS  python mpi hdf5 netcdf netcdfcpp
+  DEPENDS  python mpi hdf5 netcdf netcdfcpp libffi
 
   DOWNLOAD_COMMAND ""
   SOURCE_DIR "../zCFDSuperBuild/python-requirements"
