@@ -1,3 +1,11 @@
+
+et(C_COMP mpicc)
+set(CC_COMP mpicxx)
+if(DEFINED ENV{CRAYOS_VERSION})
+  set(C_COMP cc)
+  set(CC_COMP CC)
+endif()
+
 add_external_project(
   cgns
   DEPENDS zlib hdf5
@@ -15,8 +23,8 @@ add_external_project(
   -DENABLE_HDF5:BOOL=ON
   -DHDF5_NEED_SZIP:BOOL=ON
   -DHDF5_NEED_ZLIB:BOOL=ON
-  -DCMAKE_C_COMPILER:STRING=mpicc
-  -DCMAKE_CXX_COMPILER:STRING=mpicxx
+  -DCMAKE_C_COMPILER:STRING=${C_COMP}
+  -DCMAKE_CXX_COMPILER:STRING=${CC_COMP}
 )
 
 if (WIN32)
