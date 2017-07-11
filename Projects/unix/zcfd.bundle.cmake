@@ -129,6 +129,12 @@ install(DIRECTORY "${install_location}/lib/"
     USE_SOURCE_PERMISSIONS
     COMPONENT superbuild)
 
+# Install lib
+install(DIRECTORY "${install_location}/lib64/"
+    DESTINATION "lib"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
+
 # Install intel 
 install(DIRECTORY "${install_location}/intel"
     DESTINATION "."
