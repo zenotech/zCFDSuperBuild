@@ -53,7 +53,7 @@ mpicc = cc
 mpicxx = CC
 extra_link_args = -shared
 EOF
-  export BLAS=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_gnu_mp.so
+  export BLAS=${PREFIX}/lib/libcblas.so
   export LAPACK=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_gnu_mp.so
     # Install requirements
     MPICFG=cray ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
