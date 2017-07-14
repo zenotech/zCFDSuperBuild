@@ -1,3 +1,10 @@
+set(C_COMP mpicc)
+set(CC_COMP mpicxx)
+if(DEFINED ENV{CRAYOS_VERSION})
+  set(C_COMP cc)
+  set(CC_COMP CC)
+endif()
+
 add_external_project_or_use_system(
   hdf5
   DEPENDS zlib mpi
@@ -14,8 +21,8 @@ add_external_project_or_use_system(
     -DHDF5_BUILD_EXAMPLES:BOOL=FALSE
     -DHDF5_ENABLE_PARALLEL:BOOL=ON
     -DHDF5_BUILD_TOOLS:BOOL=ON
-    -DCMAKE_C_COMPILER:STRING=mpicc
-    -DCMAKE_CXX_COMPILER:STRING=mpicxx
+    -DCMAKE_C_COMPILER:STRING=${C_COMP}
+    -DCMAKE_CXX_COMPILER:STRING=${CC_COMP}
 )
 
 if (MSVC)
