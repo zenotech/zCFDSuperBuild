@@ -12,7 +12,7 @@ tornado==4.5.1
 pyzmq==16.0.2
 mpld3==0.3
 fabric==1.13.2
-pandas==0.20.2
+pandas==0.20.3
 jsonschema==2.6.0
 terminado==0.6
 bokeh==0.12.6
