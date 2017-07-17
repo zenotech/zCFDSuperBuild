@@ -47,7 +47,7 @@ add_external_project(paraview
   DEPENDS freetype
   DEPENDS_OPTIONAL
     adios boost cosmotools ffmpeg hdf5 libxml3 manta matplotlib mpi numpy png python qt4 qt5 visitbridge zlib silo cgns xdmf3
-    mesa osmesa nektarreader netcdf
+    mesa osmesa nektarreader netcdf netcdfcpp
     ${PV_EXTERNAL_PROJECTS} ${plugins}
 
   CMAKE_ARGS
@@ -82,6 +82,7 @@ add_external_project(paraview
     -DVTK_XDMF_USE_MPI:BOOL=ON
     -DXDMF_BUILD_MPI:BOOL=ON
 
+    -DNETCDF_CXX_ROOT:PATH=<INSTALL_DIR>
     # Web documentation
     -DPARAVIEW_BUILD_WEB_DOCUMENTATION:BOOL=${PARAVIEW_BUILD_WEB_DOCUMENTATION}
 
