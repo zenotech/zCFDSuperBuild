@@ -10,6 +10,21 @@
 
 include(CMakeDependentOption)
 
+add_revision(libunwind
+    URL "http://download.savannah.nongnu.org/releases/libunwind/libunwind-1.2.tar.gz"
+    URL_MD5 eefcb5d7f78fdc8f1ed172a26ea4202f
+)
+
+add_revision(papi
+    URL "http://icl.utk.edu/projects/papi/downloads/papi-5.5.1.tar.gz"
+    URL_MD5 86a8a6f3d0f34cd83251da3514aae15d
+)
+
+add_revision(extrae
+    URL "https://ftp.tools.bsc.es/extrae/extrae-3.5.0-src.tar.bz2"
+    URL_MD5 832c1babb1e8f8661163120e60d918a0
+)
+
 add_revision(bzip2
   URL "http://www.paraview.org/files/dependencies/bzip2-1.0.6.tar.gz"
   URL_MD5 00b516f4704d4a7cb50a1d97e6e8e15b)
@@ -304,7 +319,7 @@ add_revision(lapack
 #  URL_MD5 1841196c2bfcf10246966eecf92ad0ec)
 
 add_revision(netcdf
-  URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz 
+  URL ftp://ftp.unidata.ucar.edu/pub/netcdf/netcdf-4.4.1.1.tar.gz
   URL_MD5 503a2d6b6035d116ed53b1d80c811bda)
 
 add_revision(netcdfcpp
