@@ -21,8 +21,10 @@ add_revision(papi
 )
 
 add_revision(extrae
-    URL "https://ftp.tools.bsc.es/extrae/extrae-3.5.0-src.tar.bz2"
-    URL_MD5 832c1babb1e8f8661163120e60d918a0
+    URL "https://ftp.tools.bsc.es/extrae/extrae-3.4.3-src.tar.bz2"
+    URL_MD5 779a95aa9f498a658041f9c851ecb4f1
+    #    URL "https://ftp.tools.bsc.es/extrae/extrae-3.5.0-src.tar.bz2"
+    #    URL_MD5 832c1babb1e8f8661163120e60d918a0
 )
 
 add_revision(bzip2
