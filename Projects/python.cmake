@@ -13,10 +13,11 @@ endif()
 # code compilation when installing python packages
 
 add_external_project_or_use_system(python
-  DEPENDS bzip2 zlib png openssl
+  DEPENDS bzip2 zlib png openssl libffi
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
                     --enable-unicode
+                    --with-system-ffi
                     CC=gcc CXX=g++ FC=gfortran
                     ${shared_args}
   )
