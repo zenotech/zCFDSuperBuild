@@ -6,6 +6,7 @@ add_external_project_or_use_system(
                     --without-mpi
                     --without-dyninst
                     --enable-openmp
+                    --enable-openmp-intel
                     --with-libgomp-version=4.9
                     --enable-posix-clock
                     --with-unwind=<INSTALL_DIR>
