@@ -15,7 +15,7 @@ fabric==1.13.2
 pandas==0.20.3
 jsonschema==2.6.0
 terminado==0.6
-bokeh==0.12.6
+bokeh==0.12.7
 svgwrite==1.1.11
 pysqlite==2.8.3
 # For Jenkins
