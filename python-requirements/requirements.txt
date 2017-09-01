@@ -2,7 +2,7 @@ mpi4py==2.0.0
 snakemq==1.4
 cgen==2017.1
 jinja2==2.9.6
-codepy==2013.1.2
+codepy==2017.1
 PyYAML==3.12
 numpy==1.13.1
 #pycuda==
