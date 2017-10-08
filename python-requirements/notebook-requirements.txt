@@ -7,7 +7,7 @@ simplegeneric==0.8.1
 jupyter==1.0.0
 scipy==0.19.1
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
-matplotlib==2.0.2
+matplotlib==2.1.0
 tornado==4.5.2
 pyzmq==16.0.2
 mpld3==0.3
