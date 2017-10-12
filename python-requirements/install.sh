@@ -7,22 +7,26 @@ set -e
 # This script assumes we are in the install directory
 
 # Install pip
-wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py -O - | ${PREFIX}/bin/python
+if [[ -n "$CRAYOS_VERSION" ]]; then
+  wget --no-check-certificate https://packages.zenotech.com/get-pip.py -O - | ${PREFIX}/bin/python2.7
+else
+  wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py -O - | ${PREFIX}/bin/python2.7
+fi
 
 # Install setuptools
-${PREFIX}/bin/python ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org setuptools
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org setuptools
 
 # Upgrade pip
-${PREFIX}/bin/python ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org pip
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org pip
 
 PIPOPTS="--no-clean --global-option=build_ext --global-option=-I${PREFIX}/include --global-option=-L${PREFIX}/lib --global-option=-L${PREFIX}/lib64"
 
 # Install yolk
-${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org yolk
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org yolk
 
 
 # Install gitterpy
-${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host github.com https://github.com/graycatlabs/gitterpy/zipball/master
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host github.com https://github.com/graycatlabs/gitterpy/zipball/master
 
 # Install mpi4py
 #./install/bin/python setup.py build --mpicc=cc --mpicxx=CC --mpif95=ftn
@@ -53,21 +57,32 @@ mpicc = cc
 mpicxx = CC
 extra_link_args = -shared
 EOF
+
+  # Note on ARCHER login nodes it is best not to use /tmp as files get deleted aggressively...
+  #export TMP=
+
   export BLAS=${PREFIX}/lib/libcblas.so
+  if [ ! -e "$BLAS" ]; then
+    echo "Missing cblas library"
+    exit
+  fi
+
   export LAPACK=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_gnu_mp.so
     # Install requirements
-    MPICFG=cray ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+    MPICFG=cray ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
 else
     # Install requirements
-    CC="mpicc" ${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+    CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
 fi
 
 # Force reinstall
 #${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
 # Install notebook
-${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r notebook-requirements.txt
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r notebook-requirements.txt
 
-${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org jupyter
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org jupyter
+
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org jupyter_contrib_nbextensions
 
 # If CUDA present install pycuda
 #if [ -f "$CUDA_COMPILER" ]; then
@@ -88,4 +103,19 @@ done
 # the shebang in jupyter-nbextension is short enough to be valid
 #
 # Configure jupyter
-PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python ${PREFIX}/bin/jupyter  nbextension enable --py --sys-prefix widgetsnbextension
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextensions_configurator enable --sys-prefix
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter contrib nbextension install --sys-prefix --skip-running-check
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter  nbextension enable --py --sys-prefix widgetsnbextension
+
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension install --py --sys-prefix ipyleaflet
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix ipyleaflet
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix bqplot
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix ipyvolume
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix pythreejs
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter serverextension enable --py jupyterlab --sys-prefix
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyterlab/google-drive
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install jupyterlab_bokeh
+
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension install --py --symlink --sys-prefix ipympl
+PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix ipympl
