@@ -112,6 +112,12 @@ if(python_ENABLED)
 endif()
 
 # Install etc
+install(DIRECTORY "${install_location}/etc/"
+    DESTINATION "etc"
+    USE_SOURCE_PERMISSIONS
+    COMPONENT superbuild)
+
+# Install share
 install(DIRECTORY "${install_location}/share/"
     DESTINATION "share"
     USE_SOURCE_PERMISSIONS
