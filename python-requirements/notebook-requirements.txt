@@ -20,7 +20,7 @@ pysqlite==2.8.3
 # For Jenkins
 junit-xml==1.8
 # Plotting
-bokeh==0.12.9
+bokeh==0.12.10
 ipyleaflet==0.4.0
 bqplot==0.10.0
 holoviews==1.8.4
