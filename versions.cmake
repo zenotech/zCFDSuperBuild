@@ -85,6 +85,11 @@ add_revision(libxml2
   URL "http://paraview.org/files/dependencies/libxml2-2.7.8.tar.gz"
   URL_MD5 8127a65e8c3b08856093099b52599c86)
 
+add_revision(libxslt
+  URL "ftp://xmlsoft.org/libxslt/libxslt-1.1.31.tar.gz"
+  URL_MD5 14e9842a70fda476065f2eefcbc29af0
+)
+
 add_revision(fontconfig
   URL "https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.12.1.tar.gz"
   URL_MD5 ce55e525c37147eee14cc2de6cc09f6c)

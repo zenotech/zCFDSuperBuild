@@ -1,7 +1,7 @@
 
 add_external_project(
   pythonrequirements
-  DEPENDS  python mpi hdf5 netcdf netcdfcpp libffi libxml2 libsodium lapack freetype
+  DEPENDS  python mpi hdf5 netcdf netcdfcpp libffi libxml2 libxslt libsodium lapack freetype
 
   DOWNLOAD_COMMAND ""
   SOURCE_DIR "../zCFDSuperBuild/python-requirements"
