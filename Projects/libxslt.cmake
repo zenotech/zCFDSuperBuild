@@ -11,3 +11,11 @@ add_external_project_or_use_system(
                     ${shared_args}
   BUILD_IN_SOURCE 1
 )
+
+add_external_project_step(patch_xslt_date_c
+  COMMAND ${CMAKE_COMMAND} -E copy_if_different
+          "${SuperBuild_PROJECTS_DIR}/patches/libxslt.date.c"
+          "<SOURCE_DIR>/libexslt/date.c"
+DEPENDEES update # do after update
+DEPENDERS patch  # do before patch
+)
