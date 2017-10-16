@@ -113,9 +113,9 @@ PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbexte
 #PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix ipyvolume
 PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix pythreejs
 PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter serverextension enable --py jupyterlab --sys-prefix
-PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyterlab/google-drive
-PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager
-PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install jupyterlab_bokeh
+#PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyterlab/google-drive
+#PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install @jupyter-widgets/jupyterlab-manager
+#PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter labextension install jupyterlab_bokeh
 
 PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension install --py --symlink --sys-prefix ipympl
 PATH=${PREFIX}/bin/:${PATH} ${PREFIX}/bin/python2.7 ${PREFIX}/bin/jupyter nbextension enable --py --sys-prefix ipympl
