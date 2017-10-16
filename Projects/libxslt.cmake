@@ -6,8 +6,10 @@ endif()
 
 add_external_project_or_use_system(
   libxslt
+  DEPENDS libxml2
   CONFIGURE_COMMAND <SOURCE_DIR>/configure
                     --prefix=<INSTALL_DIR>
+                    --with-xml-prefix=<INSTALL_DIR>
                     ${shared_args}
   BUILD_IN_SOURCE 1
 )

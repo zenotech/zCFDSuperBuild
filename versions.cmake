@@ -82,8 +82,8 @@ add_revision(ffmpeg
   URL_MD5 72361d3b8717b6db3ad2b9da8df7af5e)
 
 add_revision(libxml2
-  URL "http://paraview.org/files/dependencies/libxml2-2.7.8.tar.gz"
-  URL_MD5 8127a65e8c3b08856093099b52599c86)
+  URL "ftp://xmlsoft.org/libxslt/libxml2-2.9.6.tar.gz"
+  URL_MD5 dbae8327d8471941bf0472e273473e36)
 
 add_revision(libxslt
   URL "ftp://xmlsoft.org/libxslt/libxslt-1.1.31.tar.gz"
