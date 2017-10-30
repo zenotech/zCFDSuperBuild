@@ -14,10 +14,10 @@ else
 fi
 
 # Install setuptools
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org setuptools
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --trusted-host pypi.python.org setuptools
 
 # Upgrade pip
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org pip
+${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --trusted-host pypi.python.org pip
 
 PIPOPTS="--no-clean --global-option=build_ext --global-option=-I${PREFIX}/include --global-option=-L${PREFIX}/lib --global-option=-L${PREFIX}/lib64"
 
@@ -66,10 +66,10 @@ EOF
 
   export LAPACK=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_gnu_mp.so
     # Install requirements
-    MPICFG=cray ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+    MPICFG=cray ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
 else
     # Install requirements
-    CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
+    CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
 fi
 
 # If CUDA present install pycuda
