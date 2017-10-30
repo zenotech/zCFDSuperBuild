@@ -55,7 +55,7 @@ function (PVExternalProject_Add name)
   get_property(has_process_environment TARGET pv-${name}
     PROPERTY _EP_PROCESS_ENVIRONMENT SET)
   if (NOT has_process_environment)
-    ExternalProject_Add(${name} "${ARGN}")
+      ExternalProject_Add(${name} CMAKE_CACHE_ARGS "-DCMAKE_CXX_COMPILER_LAUNCHER=${CMAKE_CXX_COMPILER_LAUNCHER}" "${ARGN}")
     return()
   endif()
 

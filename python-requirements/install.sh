@@ -21,9 +21,6 @@ ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --index-url=http://p
 
 PIPOPTS="--no-clean --global-option=build_ext --global-option=-I${PREFIX}/include --global-option=-L${PREFIX}/lib --global-option=-L${PREFIX}/lib64"
 
-# Install yolk
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org yolk
-
 
 # Install gitterpy
 ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host github.com https://github.com/graycatlabs/gitterpy/zipball/master
@@ -74,15 +71,6 @@ else
     # Install requirements
     CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
 fi
-
-# Force reinstall
-#${PREFIX}/bin/python ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --no-deps --force-reinstall --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r requirements.txt
-# Install notebook
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org -r notebook-requirements.txt
-
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org jupyter
-
-${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --index-url=http://pypi.python.org/simple/ --trusted-host pypi.python.org jupyter_contrib_nbextensions
 
 # If CUDA present install pycuda
 #if [ -f "$CUDA_COMPILER" ]; then
