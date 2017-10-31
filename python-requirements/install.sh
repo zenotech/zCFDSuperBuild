@@ -66,7 +66,7 @@ EOF
 
   export LAPACK=${CRAY_LIBSCI_PREFIX_DIR}/lib/libsci_gnu_mp.so
     # Install requirements
-    MPICFG=cray ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
+    MPICFG=cray,${PWD}/mpi.cfg ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
 else
     # Install requirements
     CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
