@@ -1,4 +1,4 @@
-mpi4py==2.0.0
+mpi4py==3.0.0
 snakemq==1.4
 cgen==2017.1
 jinja2==2.9.6
