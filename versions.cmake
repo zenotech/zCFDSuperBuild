@@ -33,8 +33,8 @@ add_revision(bzip2
 # NOTE: if updating bzip2 version, fix patch in bzip2.cmake
 
 add_revision(libsodium
-    URL "https://github.com/jedisct1/libsodium/releases/download/1.0.12/libsodium-1.0.12.tar.gz"
-    URL_MD5 c308e3faa724b630b86cc0aaf887a5d4)
+    URL "https://github.com/jedisct1/libsodium/releases/download/1.0.15/libsodium-1.0.15.tar.gz"
+    URL_MD5 070373e73a0b10bd96f412e1732ebc42)
 
 add_revision(zlib
   URL "http://zlib.net/zlib-1.2.11.tar.gz"
