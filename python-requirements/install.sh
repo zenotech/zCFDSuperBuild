@@ -19,7 +19,7 @@ ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --trusted-host pypi.
 # Upgrade pip
 ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install --upgrade --trusted-host pypi.python.org pip
 
-PIPOPTS="--no-clean --global-option=build_ext --global-option=-I${PREFIX}/include --global-option=-L${PREFIX}/lib --global-option=-L${PREFIX}/lib64"
+PIPOPTS="--verbose --no-clean --global-option=build_ext --global-option=-I${PREFIX}/include --global-option=-L${PREFIX}/lib --global-option=-L${PREFIX}/lib64"
 
 
 # Install gitterpy
