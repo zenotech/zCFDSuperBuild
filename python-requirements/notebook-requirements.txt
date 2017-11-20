@@ -38,5 +38,5 @@ pythreejs==0.4.1
 paramnb==2.0.2
 jupyterlab==0.31.1
 jupyterlab-widgets==0.6.15
-ipympl==0.0.8
+ipympl==0.1.0
 #git+https://github.com/ioam/parambokeh.git
