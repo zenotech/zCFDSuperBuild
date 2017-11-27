@@ -21,7 +21,7 @@ ELSE()
 
 add_external_project(
   zcfd
-  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk cgns ccmio libsodium
+  DEPENDS  mpi parmetis boost hdf5 threadworker trilinos python paraview paraviewsdk cgns ccmio libsodium libxsmm
   DEPENDS_OPTIONAL extrae
 
   DOWNLOAD_COMMAND ""

@@ -240,6 +240,11 @@ add_revision(osmesa
     URL_MD5 05a111fad5297025e5e47c1d6f8ab79f)
 
 
+add_revision(libxsmm
+    GIT_REPOSITORY https://github.com/hfp/libxsmm.git
+    GIT_TAG release
+)
+
 # ----------------------------------------------------------------------------
 # You choose to download ParaView source form GIT or other URL/FILE tarball
 option(ParaView_FROM_GIT "If enabled then the repository is fetched from git" ON)
