@@ -71,7 +71,7 @@ EOF
     MPICFG=cray,${PWD}/mpi.cfg ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
 else
     # Install requirements
-    CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
+    USE_SETUPCFG=0 NETCDF4_DIR=${PREFIX} HDF5_INCDIR=${PREFIX}/include HDF5_LIBDIR=${PREFIX}/lib CC="mpicc" ${PREFIX}/bin/python2.7 ${PREFIX}/bin/pip install ${PIPOPTS} --upgrade --trusted-host pypi.python.org -r requirements.txt
 fi
 
 # If CUDA present install pycuda
