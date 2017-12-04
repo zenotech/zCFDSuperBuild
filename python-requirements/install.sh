@@ -43,6 +43,8 @@ export BLAS=${PREFIX}/lib/libblas.so
 export LAPACK=${PREFIX}/lib/liblapack.so
 export ALTLAS=None
 
+export HDF5_DIR=${PREFIX}
+
 if [[ -n "$CRAYOS_VERSION" ]]; then
 
   # Note for Cray install of scipy may also need to fixup  numpy/distutils/fcompiler/gnu.py with -shared flag for gfortran
