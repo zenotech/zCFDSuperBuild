@@ -23,7 +23,7 @@ pyKriging==0.1.0
 # For Jenkins
 junit-xml==1.8
 # Plotting
-bokeh==0.12.11
+bokeh==0.12.12
 six==1.11.0
 ipyleaflet==0.4.0
 bqplot==0.10.0
