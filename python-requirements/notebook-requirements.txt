@@ -16,7 +16,7 @@ fabric==1.14.0
 pandas==0.20.3
 jsonschema==2.6.0
 terminado==0.7
-svgwrite==1.1.11
+svgwrite==1.1.12
 pysqlite==2.8.3
 git+https://github.com/aarongarrett/inspyred.git
 pyKriging==0.1.0
