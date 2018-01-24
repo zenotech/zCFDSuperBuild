@@ -10,7 +10,7 @@ scipy==1.0.0
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
 matplotlib==2.1.2
 tornado==4.5.3
-pyzmq==16.0.3
+pyzmq==16.0.4
 mpld3==0.3
 fabric==1.14.0
 pandas==0.22.0
