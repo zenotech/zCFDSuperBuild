@@ -8,7 +8,7 @@ jupyter==1.0.0
 jupyter_contrib_nbextensions==0.4.0
 scipy==1.0.0
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
-matplotlib==2.1.2
+matplotlib==2.2.0
 tornado==4.5.3
 pyzmq==16.0.4
 mpld3==0.3
