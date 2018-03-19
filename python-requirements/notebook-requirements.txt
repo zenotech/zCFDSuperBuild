@@ -34,7 +34,7 @@ colorcet==0.9.1
 xarray==0.10.0
 cloudpickle==0.5.2
 # ipyvolume==0.4.0  #  Disabling for now as requires Pillow which requires libjpeg
-pythreejs==0.4.1
+pythreejs==1.0.0
 paramnb==2.0.2
 jupyterlab==0.31.2
 jupyterlab-widgets==0.6.15
