@@ -6,7 +6,7 @@ pickleshare==0.7.4
 simplegeneric==0.8.1
 jupyter==1.0.0
 jupyter_contrib_nbextensions==0.4.0
-scipy==1.0.0
+scipy==1.0.1
 # On Macs may need to comment out /usr/X11/include/freetype2 before compiling matplotlib
 matplotlib==2.1.2
 tornado==4.5.3
