@@ -19,7 +19,7 @@ terminado==0.8.1
 svgwrite==1.1.12
 pysqlite==2.8.3
 git+https://github.com/aarongarrett/inspyred.git
-pyKriging==0.1.0
+pyKriging==0.2.0
 # For Jenkins
 junit-xml==1.8
 # Plotting
