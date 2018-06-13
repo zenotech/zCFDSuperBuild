@@ -4,7 +4,7 @@ cgen==2017.1
 jinja2==2.10
 codepy==2017.2
 PyYAML==3.12
-numpy==1.14.0
+numpy==1.14.5
 #pycuda==
 colorama==0.3.9
 #nvidia-ml-py
