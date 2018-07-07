@@ -13,7 +13,7 @@ tornado==4.5.3
 pyzmq==16.0.4
 mpld3==0.3
 fabric==1.14.0
-pandas==0.22.0
+pandas==0.23.3
 jsonschema==2.6.0
 terminado==0.8.1
 svgwrite==1.1.12
