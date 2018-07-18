@@ -12,7 +12,7 @@ matplotlib==2.1.2
 tornado==4.5.3
 pyzmq==16.0.4
 mpld3==0.3
-fabric==1.14.0
+fabric==2.2.1
 pandas==0.22.0
 jsonschema==2.6.0
 terminado==0.8.1
